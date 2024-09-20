@@ -2,6 +2,8 @@ const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');
 
+const { port } = require('./config');
+
 const app = express();
 
 app.use(cors());
@@ -11,7 +13,7 @@ app.get('/', (req, res) => {
   res.send('Ecommerce funcionando');
 });
 
-app.listen(3001, () => {
-  console.log('Servidor rodando na porta 3001');
+app.listen(port, () => {
+  console.log(`Servidor corriendo en http://localhost:${port}`);
 });
 
