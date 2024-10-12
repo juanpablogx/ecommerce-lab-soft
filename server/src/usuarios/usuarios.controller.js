@@ -1,4 +1,5 @@
 const services = require('./usuarios.service');
+const jwt = require('../helpers/jwt');
 
 const createController = async (req, res) => {
   try {
@@ -56,10 +57,25 @@ const removeController = async (req, res) => {
   }
 };
 
+const loginController = async (req, res) => {
+  try {
+    const { correo, password } = req.body;
+    const usuario = await services.findByEmailPassword(correo, password);
+    if (!usuario) {
+      return res.status(404).json({ message: 'Usuario no encontrado' });
+    }
+    const token = jwt.generateAccessToken(usuario);
+    res.status(200).json({ token, usuario: { ...usuario.get(), password_usuario: undefined } });
+  } catch (error) {
+    res.status(400).json(error);
+  }
+};
+
 module.exports = {
   createController,
   findAllController,
   findByIdController,
   updateController,
   removeController,
+  loginController
 };
