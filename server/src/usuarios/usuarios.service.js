@@ -1,4 +1,4 @@
-const Usuario = require('./usuario.model');
+const Usuario = require('./usuarios.model');
 
 const create = async (usuario) => {
   return await Usuario.create(usuario);
@@ -29,10 +29,20 @@ const remove = async (id) => {
   });
 };
 
+const findByEmailPassword = async (email, password) => {
+  return await Usuario.findOne({
+    where: {
+      correo_usuario: email,
+      password_usuario: password,
+    },
+  });
+};
+
 module.exports = {
   create,
   findAll,
   findById,
   update,
   remove,
+  findByEmailPassword
 };

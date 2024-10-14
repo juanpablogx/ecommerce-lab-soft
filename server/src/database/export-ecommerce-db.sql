@@ -227,6 +227,7 @@ CREATE TABLE public.usuario (
     correo_usuario character varying NOT NULL,
     telefono_usuario character varying NOT NULL,
     direccion_usuario character varying,
+    password_usuario character varying NOT NULL,
     rol_usuario character varying NOT NULL
 );
 
@@ -312,7 +313,7 @@ COPY public.producto_inventario (id_producto_inventario, id_producto, talla_inve
 -- Data for Name: usuario; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY public.usuario (id_usuario, nombre_usuario, apellido_usuario, correo_usuario, telefono_usuario, direccion_usuario, rol_usuario) FROM stdin;
+COPY public.usuario (id_usuario, nombre_usuario, apellido_usuario, correo_usuario, telefono_usuario, direccion_usuario, password_usuario, rol_usuario) FROM stdin;
 \.
 
 

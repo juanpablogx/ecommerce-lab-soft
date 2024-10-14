@@ -15,6 +15,7 @@ app.use(cors());
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerJsDoc));
 
 app.use('/productos', require('./productos/productos.routes'));
+app.use('/usuarios', require('./usuarios/usuarios.routes'));
 
 app.get('/', (req, res) => {
   res.send('Ecommerce funcionando');
