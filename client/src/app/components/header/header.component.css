@@ -1,0 +1,105 @@
+.main-container {
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center;
+  width: 100%;
+  color: #010714;
+  position: relative; /* Agrega posición relativa para que el encabezado posicionado absolutamente se centre correctamente */
+}
+
+.header-container {
+  position: absolute;
+  top: 0;
+  left: 50%; /* Mueve el encabezado a la mitad del contenedor principal */
+  transform: translateX(-50%); /* Corrige la posición del encabezado para que esté centrado */
+  width: 80%;
+  display: flex;
+  justify-content: space-around;
+  background-color: white;
+  align-items: center;
+  /* border-bottom: 2px solid #010714; Agrega un borde inferior */
+  border-radius: 0 0 20px 20px;
+  z-index: 1; /* Asegura que el encabezado esté por encima de otros elementos */
+  transition: box-shadow 0.3s ease; /* Agrega una transición suave a la sombra */
+}
+
+.header-container:hover{
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Agrega una sombra al hacer hover */
+}
+
+.header-container h1{
+  font-weight: bold;
+}
+
+.logo-container img{
+  width: 50px;
+  height: 50px;
+}
+
+.nav-container{
+  display: flex;
+  justify-content: space-between; /* Alinear elementos de manera uniforme */
+  align-items: center;
+  width: 60%;
+}
+
+.link-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.link-container a {
+  text-decoration: none; /* Para quitar subrayado predeterminado */
+  margin-bottom: 2px;
+  border-bottom: 2px solid transparent; /* Línea inferior transparente */
+  color: #010714;
+  transition: border-bottom 0.15s ease; /* Transición suave */
+}
+
+.link-container a h2 {
+  margin-bottom: 10px; /* Ajusta el espacio entre la letra y la línea inferior */
+}
+
+.link-container a:hover {
+  border-bottom: 4px solid #010714; /* Cambia el color de la línea inferior al hacer hover */
+}
+
+.link-container a.active {
+  border-bottom: 4px solid #010714; /* Color de la línea inferior cuando está activo */
+}
+
+.buttons-container {
+  display: flex;
+  align-items: center;
+}
+
+.circular-button {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  color: white; /* Color del ícono */
+  border: none;
+  margin-left: 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  background-color: transparent;
+  align-items: center;
+  border: 1px solid #010714; /* Borde del botón */
+}
+
+.circular-button img {
+  width: 36px;
+  height: 36px;
+}
+
+.circular-button:hover {
+  background-color: #010714; /* Cambia el color de fondo al hacer hover */
+  color: white;
+}
+
+.circular-button:hover img {
+  filter: invert(100%); /* Invierte los colores del ícono al hacer hover */
+}
