@@ -8,7 +8,8 @@ const {
   findByIdController,
   updateController,
   removeController,
-  loginController
+  loginController,
+  registerController
 } = require('./usuarios.controller');
 
 router.post('/', createController);
@@ -90,5 +91,54 @@ router.delete('/:id', removeController);
  *                   example: "Usuario no encontrado"
  */
 router.post('/login', loginController);
+/**
+ * @swagger
+ * /usuarios/register:
+ *   post:
+ *     summary: Crea un nuevo usuario.
+ *     tags: [Usuarios]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               nombre_usuario:
+ *                 type: string
+ *                 description: Nombre del usuario.
+ *                 example: Juan
+ *               apellido_usuario:
+ *                 type: string
+ *                 description: Apellido del usuario.
+ *                 example: Pérez
+ *               correo_usuario:
+ *                 type: string
+ *                 description: Correo electrónico del usuario.
+ *                 example: juan.perez@example.com
+ *               telefono_usuario:
+ *                 type: string
+ *                 description: Número de teléfono del usuario.
+ *                 example: +573001234567
+ *               direccion_usuario:
+ *                 type: string
+ *                 description: Dirección física del usuario.
+ *                 example: Calle 123 #45-67, Bogotá
+ *               password_usuario:
+ *                 type: string
+ *                 description: Contraseña del usuario (será encriptada).
+ *                 example: Password123!
+ *               rol_usuario:
+ *                 type: string
+ *                 description: Rol del usuario en la plataforma.
+ *                 example: cliente
+ *                 default: cliente
+ *     responses:
+ *       201:
+ *         description: Usuario creado.
+ *       400:
+ *         description: Error en la solicitud.
+ */
+router.post('/register', registerController);
 
 module.exports = router;

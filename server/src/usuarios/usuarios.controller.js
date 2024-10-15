@@ -71,11 +71,44 @@ const loginController = async (req, res) => {
   }
 };
 
+const registerController = async (req, res) => {
+  try {
+    const { nombre_usuario, apellido_usuario, correo_usuario, telefono_usuario, direccion_usuario, password_usuario, rol_usuario } = req.body;
+    
+    if (!nombre_usuario || !apellido_usuario || !correo_usuario || !password_usuario || !rol_usuario) {
+      return res.status(400).json({ message: 'Todos los campos son requeridos' });
+    }
+    
+    const usuarioExistente = await services.findByEmail(correo_usuario);
+    if (usuarioExistente) {
+      return res.status(400).json({ message: 'El usuario ya existe con este correo' });
+    }
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password_usuario, salt);
+    const nuevoUsuario = await services.create({
+      nombre_usuario,
+      apellido_usuario,
+      correo_usuario,
+      telefono_usuario,
+      direccion_usuario,
+      password_usuario: hashedPassword,
+      rol_usuario
+    });
+  
+    const token = jwt.generateAccessToken(nuevoUsuario);
+    res.status(201).json({ message: 'Usuario registrado con éxito', token, usuario: { ...nuevoUsuario.get(), password_usuario: undefined } });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Error en el servidor', error });
+  }
+}
+
 module.exports = {
   createController,
   findAllController,
   findByIdController,
   updateController,
   removeController,
-  loginController
+  loginController,
+  registerController
 };
