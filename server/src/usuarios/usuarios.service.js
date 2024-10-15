@@ -29,20 +29,10 @@ const remove = async (id) => {
   });
 };
 
-const findByEmailPassword = async (email, password) => {
-  return await Usuario.findOne({
-    where: {
-      correo_usuario: email,
-      password_usuario: password,
-    },
-  });
-};
-
 module.exports = {
   create,
   findAll,
   findById,
   update,
   remove,
-  findByEmailPassword
 };

@@ -3,7 +3,7 @@ const cors = require('cors');
 const morgan = require('morgan');
 const swaggerJsDoc = require('./config/swaggerConfig');
 const swaggerUi = require('swagger-ui-express');
-
+require('dotenv').config();
 const { port } = require('./config/config');
 
 const app = express();
