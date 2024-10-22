@@ -1,0 +1,29 @@
+<div class="main-container">
+  <div class="image-container">
+    <img src="img/backgrounds/back1.jpg" alt="CapClock Logo">
+  </div>
+  <div class="general-container">
+    <div class="info-container">
+      <div class="title">
+        <h1>¡Adquiere los mejores zapatos!</h1>
+      </div>
+      <button class="start-button"><a routerLink="/register">Empezar</a></button>
+    </div>
+    <div class="form-container">
+      <h1>Inicio de sesión</h1>
+        <form (ngSubmit)="onSubmit()">
+        <div class="username-container input-container">
+          <img src="icons/IconUser.svg" alt="User Icon">
+          <input type="text" id="usernameLogin" [(ngModel)]="username" name="username" placeholder="Usuario" required>
+        </div>
+        <div class="password-container input-container">
+          <img src="icons/IconKey.svg" alt="Password Icon">
+          <input type="password" id="passwordLogin" [(ngModel)]="password" name="password" placeholder="Contraseña" required>
+        </div>
+        <div class="register-container">
+          <p>¿No tienes cuenta? <a routerLink="/register">Regístrate</a></p>
+        </div>
+        <button class="submit-button" type="submit">Iniciar Sesión</button>
+      </form>
+    </div>
+</div>

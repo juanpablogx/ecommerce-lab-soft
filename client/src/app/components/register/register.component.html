@@ -1,0 +1,51 @@
+<div class="main-container">
+  <div class="image-container">
+    <img src="img/backgrounds/back2.jpg" alt="CapClock Logo">
+  </div>
+  <div class="form-container">
+    <h1>Registrate</h1>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="name-container input-container">
+        <img src="icons/IconUser.svg" alt="User Icon">
+        <input type="text" formControlName="fullName" placeholder="Nombre">
+      </div>
+
+      <div class="username-container input-container">
+        <img src="icons/IconUser.svg" alt="User Icon">
+        <input type="text" formControlName="userName" placeholder="Nombre de usuario">
+      </div>
+
+      <div class="phone-container input-container">
+        <img src="icons/IconMail.svg" alt="User Icon">
+        <input type="text" formControlName="email" placeholder="Correo">
+      </div>
+
+      <div class="phone-container input-container">
+        <img src="icons/IconPhone.svg" alt="User Icon">
+        <input type="text" formControlName="phone" placeholder="Celular">
+      </div>
+
+      <div class="address-container input-container">
+        <img src="icons/IconHome.svg" alt="User Icon">
+        <input type="text" formControlName="address" placeholder="Dirección">
+      </div>
+
+      <div class="password-container input-container">
+        <img src="icons/IconKey.svg" alt="Password Icon">
+        <input type="password" formControlName="password" placeholder="Contraseña">
+      </div>
+
+      <div class="passwordconfirm-container input-container">
+        <img src="icons/IconKey.svg" alt="Password Icon">
+        <input type="password" formControlName="passwordConfirm" placeholder="Confirmar contraseña">
+      </div>
+
+      <div class="terms-container">
+        <input type="checkbox" formControlName="terms" id="terms">
+        <label for="terms">Aceptar términos y condiciones</label>
+      </div>
+  
+      <button class="submit-button" type="submit">Registrarse</button>
+    </form>
+  </div>
+</div>
