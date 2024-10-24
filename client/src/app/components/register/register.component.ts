@@ -37,27 +37,27 @@ export class RegisterComponent {
   }
 
   onSubmit() {
-    console.log('Formulario de registro:', this.registerForm.value);
-    console.log('Formulario de registro válido:', this.registerForm.valid);
-    if (this.registerForm.valid) {
-      const formData = this.registerForm.value;
-      if (formData.password !== formData.passwordConfirm) {
-        alert('Las contraseñas no coinciden');
-        return;
-      }
-      this.http.post('http://localhost:8000/users', formData).subscribe(
-        (response) => {
-          console.log('Registro exitoso:', response);
-          window.alert('Registro exitoso.');
-          this.router.navigate(['/login']);
-        },
-        (error) => {
-          console.error('Error en el registro:', error);
-          window.alert('Error en el registro.');
-        }
-      );
-    } else {
-      alert('Por favor, complete el formulario correctamente');
-    }
+    // console.log('Formulario de registro:', this.registerForm.value);
+    // console.log('Formulario de registro válido:', this.registerForm.valid);
+    // if (this.registerForm.valid) {
+    //   const formData = this.registerForm.value;
+    //   if (formData.password !== formData.passwordConfirm) {
+    //     alert('Las contraseñas no coinciden');
+    //     return;
+    //   }
+    //   this.http.post('http://localhost:8000/users', formData).subscribe(
+    //     (response) => {
+    //       console.log('Registro exitoso:', response);
+    //       window.alert('Registro exitoso.');
+    //       this.router.navigate(['/login']);
+    //     },
+    //     (error) => {
+    //       console.error('Error en el registro:', error);
+    //       window.alert('Error en el registro.');
+    //     }
+    //   );
+    // } else {
+    //   alert('Por favor, complete el formulario correctamente');
+    // }
   }
 }

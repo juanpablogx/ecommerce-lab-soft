@@ -53,9 +53,10 @@
   align-items: center;
   border: 2px solid white;
   border-radius: 60px;
-  padding: 0;
+  padding: 8px;
   margin: 10px 0;
   width: 100%;
+  font-weight: bold;
 }
 
 .input-container input{

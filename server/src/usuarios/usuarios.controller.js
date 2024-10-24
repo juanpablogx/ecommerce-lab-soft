@@ -67,6 +67,7 @@ const loginController = async (req, res) => {
     const token = jwt.generateAccessToken(usuario);
     res.status(200).json({ token, usuario: { ...usuario.get(), password_usuario: undefined } });
   } catch (error) {
+    console.log(error);
     res.status(400).json(error);
   }
 };
