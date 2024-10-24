@@ -262,5 +262,50 @@ router.post('/login', loginController);
  *         description: Error en la solicitud.
  */
 router.post('/register', registerController);
+/**
+ * @swagger
+ * /register:
+ *   post:
+ *     summary: Registrar un nuevo usuario
+ *     description: Registra un nuevo usuario y devuelve un token de acceso.
+ *     tags: [Auth]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               nombre_usuario:
+ *                 type: string
+ *               apellido_usuario:
+ *                 type: string
+ *               correo_usuario:
+ *                 type: string
+ *               telefono_usuario:
+ *                 type: string
+ *               direccion_usuario:
+ *                 type: string
+ *               password_usuario:
+ *                 type: string
+ *               rol_usuario:
+ *                 type: string
+ *             example:
+ *               nombre_usuario: Juan
+ *               apellido_usuario: Perez
+ *               correo_usuario: juan@example.com
+ *               telefono_usuario: "123456789"
+ *               direccion_usuario: Calle 123
+ *               password_usuario: password123
+ *               rol_usuario: admin
+ *     responses:
+ *       201:
+ *         description: Usuario registrado con éxito
+ *       400:
+ *         description: El usuario ya existe o faltan datos requeridos
+ *       500:
+ *         description: Error en el servidor
+ */
+
 
 module.exports = router;
