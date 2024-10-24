@@ -1,5 +1,6 @@
 const services = require('./usuarios.service');
 const jwt = require('../helpers/jwt');
+const bcrypt = require('bcrypt');
 
 const createController = async (req, res) => {
   try {
@@ -92,7 +93,7 @@ const registerController = async (req, res) => {
       correo_usuario,
       telefono_usuario,
       direccion_usuario,
-      password_usuario: hashedPassword,
+      password_usuario,
       rol_usuario
     });
   

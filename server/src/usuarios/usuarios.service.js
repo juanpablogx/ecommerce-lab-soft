@@ -38,6 +38,13 @@ const findByEmailPassword = async (email, password) => {
   });
 };
 
+const findByEmail = async (email) => {
+  return await Usuario.findOne({
+    where: {
+      correo_usuario: email,},
+    });
+  };
+
 module.exports = {
   create,
   findAll,
@@ -45,4 +52,5 @@ module.exports = {
   update,
   remove,
   findByEmailPassword,
+  findByEmail,
 };

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { User } from '../interfaces/user.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,10 @@ export class EcommerceService {
 
   login(user: any) {
     return this.http.post(`${this.url}/usuarios/login`, user);
+  }
+
+  register(user: User){
+    return this.http.post(`${this.url}/usuarios/register`, user);
   }
 
 }

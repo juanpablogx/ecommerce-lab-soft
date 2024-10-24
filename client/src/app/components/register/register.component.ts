@@ -1,7 +1,14 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import {
+  FormGroup,
+  FormBuilder,
+  Validators,
+  FormControl,
+} from '@angular/forms';
 import { Router } from '@angular/router';
+import { User } from '../../interfaces/user.interface';
+import { EcommerceService } from '../../services/ecommerce.service';
 
 @Component({
   selector: 'app-register',
@@ -14,50 +21,54 @@ export class RegisterComponent {
   constructor(
     private router: Router,
     private fb: FormBuilder,
-    private http: HttpClient
+    private http: HttpClient,
+    private ecommerceService: EcommerceService
   ) {}
 
   ngOnInit(): void {
     this.registerForm = this.fb.group({
-      fullName: new FormControl('', [Validators.required]),
-      userName: new FormControl('', [Validators.required]),
+      name: new FormControl('', [Validators.required]),
+      lastName: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.email]),
       phone: new FormControl('', [Validators.required]),
       address: new FormControl('', [Validators.required]),
       password: new FormControl('', [
         Validators.required,
-        Validators.minLength(6),
+        Validators.minLength(5),
       ]),
       passwordConfirm: new FormControl('', [
         Validators.required,
-        Validators.minLength(6),
+        Validators.minLength(5),
       ]),
       terms: new FormControl(false, [Validators.requiredTrue]),
     });
   }
 
   onSubmit() {
-    // console.log('Formulario de registro:', this.registerForm.value);
-    // console.log('Formulario de registro válido:', this.registerForm.valid);
-    // if (this.registerForm.valid) {
-    //   const formData = this.registerForm.value;
-    //   if (formData.password !== formData.passwordConfirm) {
-    //     alert('Las contraseñas no coinciden');
-    //     return;
-    //   }
-    //   this.http.post('http://localhost:8000/users', formData).subscribe(
-    //     (response) => {
-    //       console.log('Registro exitoso:', response);
-    //       window.alert('Registro exitoso.');
-    //       this.router.navigate(['/login']);
-    //     },
-    //     (error) => {
-    //       console.error('Error en el registro:', error);
-    //       window.alert('Error en el registro.');
-    //     }
-    //   );
-    // } else {
-    //   alert('Por favor, complete el formulario correctamente');
-    // }
+    const formValue = this.registerForm.value;
+    if (this.registerForm.invalid) {
+      alert('Formulario inválido');
+      return;
+    }
+    if (formValue.password !== formValue.passwordConfirm) {
+      alert('Las contraseñas no coinciden');
+      return;
+    }
+
+    const newUser: User = {
+      nombre_usuario: formValue.name,
+      apellido_usuario: formValue.lastName,
+      correo_usuario: formValue.email,
+      telefono_usuario: formValue.phone,
+      direccion_usuario: formValue.address,
+      password_usuario: formValue.password,
+      rol_usuario: 'client',
+    };
+
+    this.ecommerceService.register(newUser).subscribe((data) => {
+      console.log(data);
+      alert('Usuario registrado exitosamente');
+      this.router.navigate(['login']);
+    });
   }
 }
