@@ -144,4 +144,5 @@
   object-fit: cover;
   background-image: url('../../../assets/img/no-product-image.png');
   background-size: cover;
+  background-position: center;
 }

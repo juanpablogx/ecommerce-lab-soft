@@ -9,8 +9,8 @@
         }
       </div>
       <div class="secondary-images-container">
-        @if (productInventory.imagenes !== undefined) {
-          @for (image of productInventory.imagenes; track $index) {
+        @if (product.imagenes !== undefined) {
+          @for (image of product.imagenes; track $index) {
             <img
             [src]="image.url"
             (click)="selectImage(image, $event)"
@@ -23,8 +23,8 @@
     </div>
     <div class="info-container">
       <div class="name-container">
-        <h1>{{productInventory.producto.nombre_producto}}</h1>
-        <h2>${{productInventory.producto.precio}}</h2>
+        <h1>{{product.nombre_producto}}</h1>
+        <h2>${{product.precio}}</h2>
       </div>
       <div class="quantity-container">
         <button class="subtract" (click)="setQuantity(-1)">-</button>
@@ -38,7 +38,7 @@
         </button>
       </div>
       <div class="description-container">
-        <p>{{productInventory.producto.descripcion_producto}}</p>
+        <p>{{product.descripcion_producto}}</p>
       </div>
     </div>
   </div>
