@@ -18,7 +18,11 @@ const Producto = sequelize.define('Producto', {
   categoria: {
     type: DataTypes.STRING,
     allowNull: false,
-  }
+  },
+  precio: {
+    type: DataTypes.REAL,
+    allowNull: false,
+  },
 }, {
   tableName: 'producto',
   timestamps: false,
@@ -28,6 +32,11 @@ Producto.associate = (models) => {
   Producto.hasMany(models.ProductoInventario, {
     foreignKey: 'id_producto',
     as: 'productoInventario'
+  });
+
+  Producto.hasMany(models.Imagen_producto, {
+    foreignKey: 'id_producto',
+    as: 'imagenProducto'
   });
 };
 

@@ -56,6 +56,18 @@ const addImageController = async (req, res) => {
   }
 }
 
+const getImageController = async (req, res) => {
+  try{
+    const productId = req.params.id;
+    const image = await services.findByProductId(productId);
+    res.status(200).json(image);
+  } catch (error){
+    console.log('Error obteniendo imagen de producto:', error);
+    res.status(500).json({ message: 'Error obteniendo imagen de producto'});
+    res.end();
+  }
+}
+
 module.exports = {
   addImageController,
 }
