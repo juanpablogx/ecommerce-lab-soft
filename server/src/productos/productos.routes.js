@@ -7,7 +7,9 @@ const {
   findAllController,
   findByIdController,
   updateController,
-  removeController
+  removeController,
+  getAllProductsController,
+  getProductByIdController
 } = require('./productos.controller');
 
 /**
@@ -188,6 +190,94 @@ router.delete('/:id', removeController);
  *         description: Producto no encontrado con el ID proporcionado
  *       400:
  *         description: Error al intentar eliminar el producto
+ */
+
+router.get('/', getAllProductsController);
+/**
+ * @swagger
+ * /productos:
+ *   get:
+ *     summary: Obtiene la lista de todos los zapatos
+ *     tags:
+ *       - Productos
+ *     responses:
+ *       200:
+ *         description: Lista de zapatos obtenida exitosamente
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 type: object
+ *                 properties:
+ *                   id:
+ *                     type: integer
+ *                     example: 1
+ *                   nombre:
+ *                     type: string
+ *                     example: "Zapatillas de Correr"
+ *                   precio:
+ *                     type: number
+ *                     format: float
+ *                     example: 59.99
+ *                   talla:
+ *                     type: string
+ *                     example: "42"
+ *                   color:
+ *                     type: string
+ *                     example: "Rojo"
+ *                   descripcion:
+ *                     type: string
+ *                     example: "Zapatillas ligeras ideales para correr."
+ *       500:
+ *         description: Error interno del servidor
+ */
+
+router.get('/:id_producto', getProductByIdController);
+/**
+ * @swagger
+ * /productos/{id}:
+ *   get:
+ *     summary: Obtiene un zapato por su ID
+ *     tags:
+ *       - Productos
+ *     parameters:
+ *       - name: id
+ *         in: path
+ *         required: true
+ *         description: ID del zapato a obtener
+ *         schema:
+ *           type: integer
+ *           example: 1
+ *     responses:
+ *       200:
+ *         description: Zapato encontrado
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 id:
+ *                   type: integer
+ *                   example: 1
+ *                 nombre:
+ *                   type: string
+ *                   example: "Zapatillas de Correr"
+ *                 precio:
+ *                   type: number
+ *                   format: float
+ *                   example: 59.99
+ *                 talla:
+ *                   type: string
+ *                   example: "42"
+ *                 color:
+ *                   type: string
+ *                   example: "Rojo"
+ *                 descripcion:
+ *                   type: string
+ *                   example: "Zapatillas ligeras ideales para correr."
+ *       404:
+ *         description: Producto no encontrado
  */
 
 
