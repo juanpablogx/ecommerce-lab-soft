@@ -17,10 +17,18 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerJsDoc));
 app.use('/productos', require('./productos/productos.routes'));
 app.use('/usuarios', require('./usuarios/usuarios.routes'));
 app.use('/img_productos', require('./img_productos/img_productos.routes'));
+app.use('/productos-inventario', require('./productos-inventario/productos-inventario.routes'));
 
 app.get('/', (req, res) => {
   res.send('Ecommerce funcionando');
 });
+
+app.use((err, req, res, next) => {
+  console.error(err);
+  res.status(400).send(err);
+});
+
+const syncModels = require('./config/modelsConfig');
 
 app.listen(port, () => {
   console.log(`Servidor corriendo en http://localhost:${port}`);
