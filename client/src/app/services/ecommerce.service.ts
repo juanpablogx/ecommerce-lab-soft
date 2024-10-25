@@ -24,6 +24,10 @@ export class EcommerceService {
     return this.http.get(`${this.url}/productos`);
   }
 
+  getProductsByCategory(category: string){
+    return this.http.get(`${this.url}/productos/categoria/${category}`);
+  }
+
   productDetails(id_producto: number){
     return this.http.get<Product[] | Object>(`${this.url}/productos/${id_producto}`);
   }

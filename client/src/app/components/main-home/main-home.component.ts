@@ -29,42 +29,36 @@ export class MainHomeComponent {
 
     });
 
-  //   this.route.params.subscribe((params) => {
-  //     this.page = params['page']; // Aquí obtienes el valor del parámetro de ruta
-  //     console.log(this.page);
+    this.route.params.subscribe((params) => {
+      this.page = params['page']; // Aquí obtienes el valor del parámetro de ruta
+      console.log(this.page);
 
-  //     if (this.page === 'shop') {
-  //       this.title = 'Shop';
-  //       this.imageRoute = '../../../assets/shop_home.jpg';
-  //       this.http
-  //         .get('http://localhost:8000/products')
-  //         .subscribe((data: any) => {
-  //           console.log(data);
-  //           this.allProducts = data;
-  //           this.products = data;
-  //         });
-  //     } else if (this.page === 'caps') {
-  //       this.title = 'Gorras';
-  //       this.imageRoute = '../../../assets/img/backgrounds/caps_home.png';
-  //       this.http
-  //         .get('http://localhost:8000/products/category/cap')
-  //         .subscribe((data: any) => {
-  //           console.log(data);
-  //           this.allProducts = data;
-  //           this.products = data;
-  //         });
-  //     } else if (this.page === 'watchs') {
-  //       this.title = 'Relojes';
-  //       this.imageRoute = '../../../assets/img/backgrounds/watchs_home.jpg';
-  //       this.http
-  //         .get('http://localhost:8000/products/category/clock')
-  //         .subscribe((data: any) => {
-  //           console.log(data);
-  //           this.allProducts = data;
-  //           this.products = data;
-  //         });
-  //     }
-  //   });
+      if (this.page === 'shop') {
+        this.title = 'Shop';
+        this.imageRoute = '/img/backgrounds/back4.jpg';
+
+        this.ecommerceService.getAllProducts().subscribe((data: any) => {
+          console.log(data);
+          this.allProducts = data;
+          this.products = data;
+        })} else if (this.page === 'hombre') {
+          this.title = 'Hombre';
+          this.imageRoute = '/img/backgrounds/back1.jpg';
+          this.ecommerceService.getProductsByCategory('hombre').subscribe((data: any) => {
+            console.log(data);
+            this.allProducts = data;
+            this.products = data;
+          });
+        } else if (this.page === 'mujer') {
+          this.title = 'Mujer';
+          this.imageRoute = '/img/backgrounds/backMujer3.jpg';
+          this.ecommerceService.getProductsByCategory('mujer').subscribe((data: any) => {
+            console.log(data);
+            this.allProducts = data;
+            this.products = data;
+          });
+        }
+      });
   }
 
   filterProducts(event: any): void {

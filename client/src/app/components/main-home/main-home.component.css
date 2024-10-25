@@ -13,9 +13,9 @@
 
 .main-image-container img {
   width: 100%;
-  height: 100%; /* Utiliza el 100% de la altura disponible */
+  height: 80%; /* Utiliza el 100% de la altura disponible */
   object-fit: cover; /* Corta la imagen manteniendo su relación de aspecto */
-  object-position: top; /* Corta la imagen desde la parte superior */
+  object-position: center; /* Corta la imagen desde la parte superior */
 }
 
 .image-title {
