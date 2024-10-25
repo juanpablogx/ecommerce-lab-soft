@@ -54,10 +54,40 @@ const removeController = async (req, res) => {
   }
 };
 
+const getAllProductsController = async (req, res) => {
+  try {
+    const productosConDetalles = await services.getAllProducts();
+    if (productosConDetalles.length === 0) {
+      return res.status(404).json({ message: 'No se encontraron productos' });
+    }
+    res.status(200).json(productosConDetalles);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Error al obtener los productos' });
+  }
+};
+
+
+const getProductByIdController = async (req, res) => {
+  try {
+    const id_producto = req.params.id_producto;
+    const productoConDetalles = await services.getProductById(id_producto);
+    if (!productoConDetalles) {
+      return res.status(404).json({ message: 'Producto no encontrado' });
+    }
+    res.status(200).json(productoConDetalles);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Error al obtener el producto' });
+  }
+};
+
 module.exports = {
   createController,
   findAllController,
   findByIdController,
   updateController,
   removeController,
+  getAllProductsController,
+  getProductByIdController
 };
