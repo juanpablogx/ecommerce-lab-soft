@@ -2,23 +2,29 @@
   <div class="product-container">
     <div class="carrusel-container">
       <div class="main-image-container">
-        <img src="{{selectedImage.url}}" alt="Imagen producto">
+        @if (selectedImage !== undefined) {
+          <img src="{{selectedImage.url}}" alt="Imagen producto">
+        } @else {
+          <div class="no-image"></div>
+        }
       </div>
       <div class="secondary-images-container">
-        @for (image of productInventory.imagenes; track $index) {
-          <img
-          [src]="image.url"
-          (click)="selectImage(image, $event)"
-          (mouseenter)="selectImage(image, $event)"
-          (mouseleave)="selectImage(image, $event)"
-          [class.active]="image === selectedImage">
+        @if (product.imagenes !== undefined) {
+          @for (image of product.imagenes; track $index) {
+            <img
+            [src]="image.url"
+            (click)="selectImage(image, $event)"
+            (mouseenter)="selectImage(image, $event)"
+            (mouseleave)="selectImage(image, $event)"
+            [class.active]="image === selectedImage">
+          }
         }
       </div>
     </div>
     <div class="info-container">
       <div class="name-container">
-        <h1>{{productInventory.producto.nombre_producto}}</h1>
-        <h2>${{productInventory.producto.precio}}</h2>
+        <h1>{{product.nombre_producto}}</h1>
+        <h2>${{product.precio}}</h2>
       </div>
       <div class="quantity-container">
         <button class="subtract" (click)="setQuantity(-1)">-</button>
@@ -32,7 +38,7 @@
         </button>
       </div>
       <div class="description-container">
-        <p>{{productInventory.producto.descripcion_producto}}</p>
+        <p>{{product.descripcion_producto}}</p>
       </div>
     </div>
   </div>

@@ -19,13 +19,13 @@ export class EcommerceService {
   register(user: User){
     return this.http.post(`${this.url}/usuarios/register`, user);
   }
-  
+
   getAllProducts(){
     return this.http.get(`${this.url}/productos`);
   }
 
   productDetails(id_producto: number){
-    return this.http.get<Product[] | Object>(`${this.url}/productos-inventario/${id_producto}`);
+    return this.http.get<Product[] | Object>(`${this.url}/productos/${id_producto}`);
   }
 
 }

@@ -22,7 +22,19 @@ const findAll = async () => {
 };
 
 const findById = async (id) => {
-  return await Producto.findByPk(id);
+  let productos = await Producto.findByPk(id);
+
+  if (productos?.id_producto) {
+    let imagenes = await Imagen_producto.findAll({
+      where: {
+        id_producto: productos.id_producto,
+      },
+    });
+
+    productos.dataValues.imagenes = imagenes;
+  }
+
+  return productos;
 };
 
 const findByCategory = async (category) => {

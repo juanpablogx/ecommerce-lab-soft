@@ -137,3 +137,12 @@
 .add-to-cart-container:hover > .add-to-cart img {
   filter: none;
 }
+
+.no-image {
+  width: 400px;
+  height: 400px;
+  object-fit: cover;
+  background-image: url('../../../assets/img/no-product-image.png');
+  background-size: cover;
+  background-position: center;
+}

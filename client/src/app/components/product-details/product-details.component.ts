@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ProductInventory } from '../../interfaces/product-inventory.interface';
 import { EcommerceService } from '../../services/ecommerce.service';
 import { ImageProduct } from '../../interfaces/image-product.interface';
+import { Product } from '../../interfaces/product.interface';
 
 
 @Component({
@@ -13,7 +14,7 @@ import { ImageProduct } from '../../interfaces/image-product.interface';
 })
 export class ProductDetailsComponent implements OnInit {
   id_producto!: number;
-  productInventory!: ProductInventory;
+  product!: Product;
   selectedImage!: ImageProduct;
   previousImage!: ImageProduct;
   quantity = 1;
@@ -26,8 +27,8 @@ export class ProductDetailsComponent implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute, private ecommerceService: EcommerceService) {}
 
-  isProduct(productInventory: ProductInventory): productInventory is ProductInventory {
-    return (productInventory as ProductInventory).id_producto_inventario !== undefined;
+  isProduct(product: Product): product is Product {
+    return (product as Product).id_producto !== undefined;
   }
 
   fetchProduct() {
@@ -35,8 +36,8 @@ export class ProductDetailsComponent implements OnInit {
       console.log(data);
       if (this.isProduct(data)) {
         this.isLoadingProduct = false;
-        this.productInventory = data;
-        this.selectedImage = this.productInventory.imagenes[0];
+        this.product = data;
+        this.selectedImage = this.product.imagenes[0];
       } else {
         this.isError = true;
         this.errorMessage = data;
