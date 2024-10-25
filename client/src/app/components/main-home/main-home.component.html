@@ -1,0 +1,26 @@
+<div class="main-container">
+  <div class="main-image-container">
+    <img src={{imageRoute}} alt="CapClock Logo">
+    <h1 class="image-title">{{title}}</h1>
+  </div>
+  <div class="main-products-container">
+    <div class="search-container">
+      <h1>Productos</h1>
+      <div class="searcher">
+        <div class="searcher-logo">
+          <img src="/icons/IconSearch.svg" alt="Search Icon">
+        </div>
+        <div class="searcher-input">
+          <input type="text" placeholder="Search on StepUp" (keyup)="filterProducts($event)">
+        </div>
+        <div class="search-button-container">
+          <button class="search-button">Search</button>
+        </div>
+      </div>
+    </div>
+    <div class="products-container">
+      <app-product-card *ngFor="let product of products" [product]="product"></app-product-card>
+    </div>
+  </div>
+
+</div>

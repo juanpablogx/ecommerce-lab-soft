@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { EcommerceService } from '../../services/ecommerce.service';
+import { JwtService } from '../../services/jwt.service';
 
 @Component({
   selector: 'app-login',
