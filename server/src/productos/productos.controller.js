@@ -29,6 +29,16 @@ const findByIdController = async (req, res) => {
   }
 };
 
+const findByCategoryController = async (req, res) => {
+  try {
+    const { category } = req.params;
+    const productos = await services.findByCategory(category);
+    res.status(200).json(productos);
+  } catch (error) {
+    res.status(400).json(error);
+  }
+};
+
 const updateController = async (req, res) => {
   try {
     const { id } = req.params;
@@ -58,6 +68,7 @@ module.exports = {
   createController,
   findAllController,
   findByIdController,
+  findByCategoryController,
   updateController,
   removeController,
 };

@@ -6,6 +6,7 @@ const {
   createController,
   findAllController,
   findByIdController,
+  findByCategoryController,
   updateController,
   removeController
 } = require('./productos.controller');
@@ -126,6 +127,8 @@ router.get('/:id', findByIdController);
  *       400:
  *         description: Error al buscar el producto
  */
+
+router.get('/categoria/:category', findByCategoryController);
 
 router.put('/:id', updateController);
 /**
