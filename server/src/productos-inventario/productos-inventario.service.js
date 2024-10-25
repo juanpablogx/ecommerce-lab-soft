@@ -1,33 +1,56 @@
 const { Op } = require('sequelize');
 const Producto = require('../productos/productos.model');
 const ProductoInventario = require('./productos-inventario.model');
+const Imagen_producto = require('../img_productos/img_productos.model');
 
 const create = async (productoInventario) => {
   return await ProductoInventario.create(productoInventario);
 };
 
 const findAll = async () => {
-  return await ProductoInventario.findAll({
+  let productosInventario = await ProductoInventario.findAll({
     include: [
       {
         model: Producto,
-        as: 'producto',
-        attributes: ['id_producto', 'nombre_producto', 'descripcion_producto', 'categoria'],
+        as: 'producto'
       },
     ],
   });
+
+  for (let i = 0; i < productosInventario.length; i++) {
+    let imagenes = await Imagen_producto.findAll({
+      where: {
+        id_producto: productosInventario[i].id_producto,
+      },
+    });
+
+    productosInventario[i].dataValues.imagenes = imagenes;
+  }
+
+  return productosInventario;
 };
 
 const findById = async (id) => {
-  return await ProductoInventario.findByPk(id, {
+  let productosInventario = await ProductoInventario.findByPk(id, {
     include: [
       {
         model: Producto,
-        as: 'producto',
-        attributes: ['id_producto', 'nombre_producto', 'descripcion_producto', 'categoria'],
+        as: 'producto'
       },
     ],
   });
+
+  if (productosInventario?.id_producto_inventario) {
+    let imagenes = await Imagen_producto.findAll({
+      where: {
+        id_producto: productosInventario.id_producto,
+      },
+    });
+
+    productosInventario.dataValues.imagenes = imagenes;
+  }
+
+  return productosInventario;
 };
 
 const findByCategory = async (category) => {
@@ -36,7 +59,6 @@ const findByCategory = async (category) => {
       {
         model: Producto,
         as: 'producto',
-        attributes: ['id_producto', 'nombre_producto', 'descripcion_producto', 'categoria'],
         where: {
           categoria: {
             [Op.like]: `%${category}%`,
@@ -53,7 +75,6 @@ const findByNameProduct = async (nameProduct) => {
       {
         model: Producto,
         as: 'producto',
-        attributes: ['id_producto', 'nombre_producto', 'descripcion_producto', 'categoria'],
         where: {
           nombre_producto: {
             [Op.like]: `%${nameProduct}%`,

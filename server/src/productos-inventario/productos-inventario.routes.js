@@ -131,6 +131,9 @@ router.post('/', createController);
  *                     categoria:
  *                       type: string
  *                       example: "Categoria 1"
+ *                     precio:
+ *                       type: number
+ *                       example: 150000.00
  *       400:
  *         description: Error al obtener todos los productos en el inventario
  */
@@ -191,6 +194,9 @@ router.get('/', findAllController);
  *                     categoria:
  *                       type: string
  *                       example: "Categoria 1"
+ *                     precio:
+ *                       type: number
+ *                       example: 150000.00
  *       400:
  *         description: Error al obtener un producto en el inventario
  */
@@ -237,6 +243,10 @@ router.get('/:id', findByIdController);
  *                 type: integer
  *                 description: Stock actual del producto
  *                 example: 10
+ *               precio:
+ *                 type: number
+ *                 description: Precio del producto
+ *                 example: 150000.00
  * 
  *     responses:
  *       200:
@@ -279,6 +289,9 @@ router.get('/:id', findByIdController);
  *                     categoria:
  *                       type: string
  *                       example: "Categoria 1"
+ *                     precio:
+ *                       type: number
+ *                       example: 150000.00
  *       400:
  *         description: Error al actualizar un producto en el inventario
  */
@@ -381,6 +394,9 @@ router.delete('/:id', removeController);
  *                       categoria:
  *                         type: string
  *                         example: "Categoria 1"
+ *                       precio:
+ *                         type: number
+ *                         example: 150000.00
  *       400:
  *         description: Error al obtener todos los productos en el inventario de una categoria
  */
@@ -443,6 +459,9 @@ router.get('/categoria/:categoria', findByCategoryController);
  *                       categoria:
  *                         type: string
  *                         example: "Categoria 1"
+ *                       precio:
+ *                         type: number
+ *                         example: 150000.00
  *       400:
  *         description: Error al obtener todos los productos en el inventario con un nombre de producto
  */

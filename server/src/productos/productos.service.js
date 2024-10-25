@@ -1,11 +1,24 @@
 const Producto = require('./productos.model');
+const Imagen_producto = require('../img_productos/img_productos.model');
 
 const create = async (producto) => {
   return await Producto.create(producto);
 };
 
 const findAll = async () => {
-  return await Producto.findAll();
+  let productos = await Producto.findAll();
+
+  for (let i = 0; i < productos.length; i++) {
+    let imagenes = await Imagen_producto.findAll({
+      where: {
+        id_producto: productos[i].id_producto,
+      },
+    });
+
+    productos[i].dataValues.imagenes = imagenes;
+  }
+
+  return productos;
 };
 
 const findById = async (id) => {
