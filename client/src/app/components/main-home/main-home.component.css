@@ -1,0 +1,118 @@
+.main-container {
+  display: flex;
+  position: relative;
+  flex-direction: column; /* Cambia la dirección de los elementos a vertical */
+}
+
+.main-image-container {
+  position: relative; /* Agrega posición relativa para que los elementos absolutos dentro de este contenedor se posicionen correctamente */
+  width: 100%;
+  max-height: 90vh; /* El alto máximo es el 50% de la altura visible del viewport */
+  overflow: hidden;
+}
+
+.main-image-container img {
+  width: 100%;
+  height: 100%; /* Utiliza el 100% de la altura disponible */
+  object-fit: cover; /* Corta la imagen manteniendo su relación de aspecto */
+  object-position: top; /* Corta la imagen desde la parte superior */
+}
+
+.image-title {
+  position: absolute;
+  left: 50%; /* Centra horizontalmente */
+  transform: translateX(-50%); /* Centra horizontalmente */
+  font-size: 150px; /* Tamaño de letra grande */
+  color: white; /* Color blanco */
+  margin: 0;
+  text-align: center; /* Centra el texto */
+  z-index: 0; /* Asegura que esté encima de la imagen */
+  bottom:65px; /* Centra verticalmente */
+  text-shadow: -2px -2px 0 rgba(0, 0, 0, 0.5); /* Efecto de borde interno */
+}
+
+
+.search-container {
+  display: flex;
+  padding: 20px; /* Espacio interno */
+  border-radius: 10px; 
+  align-items: center;
+  justify-content: space-around;
+  margin: 0 50px;
+}
+
+.search-container h1 {
+  font-size: 42px;
+  color: #010714;
+}
+
+
+.searcher {
+  display: flex;
+  align-items: center;
+  border: 1px solid #CCCCCC;
+  border-radius: 60px;
+  width: 65%;
+  padding: 10px 10px 10px 0;
+  justify-content: space-around;
+}
+
+.searcher-logo img{
+  width: 40px;
+  filter: invert(70%); 
+  margin-left: 10px;
+
+}
+
+.searcher-input {
+  width: 80%;
+  padding: 0;
+}
+
+.searcher-input input {
+  padding: 10px; 
+  border: none;
+  border-radius: 5px; 
+  width: 100%;
+  font-size: 20px; 
+}
+.searcher-input input:focus {
+  outline: none; 
+}
+
+.search-button-container {
+  margin-left: 10px; 
+}
+
+.search-button {
+  padding: 10px 20px; 
+  background-color: #011232; 
+  color: white; 
+  border: 1px solid #011232; 
+  border-radius: 30px; 
+  cursor: pointer; 
+  transition: background-color 0.3s ease; 
+  margin-right: 5px;
+  font-size: 20px;
+}
+
+.search-button:hover {
+  background-color: white; /* Color de fondo al pasar */
+  color:#010714;
+  border: 1px solid #010714;
+}
+
+.main-products-container {
+  border-radius: 20px;
+  background-color: white;
+  width: 80%;
+  margin: 0 auto; 
+  position: relative; 
+  top: -100px; 
+}
+
+.products-container{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}

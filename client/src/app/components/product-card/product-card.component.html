@@ -1,0 +1,18 @@
+<div class="main-container">
+  <div class="image-container">
+    <img src="{{product.images[0].ImageURL}}" alt="CapClock Logo">
+  </div>
+  <div class="name-container">
+    <h1 class="product-name">{{product.productName}}</h1>
+  </div>
+  <div class="info-container">
+    <div class="price-container">
+      <label>Precio</label>
+      <h2 class="product-price">${{product.price}}</h2>
+    </div>
+    <div class="buttons-container">
+      <button class="add-button" (click)="addToCart()" routerLink="/cart" *ngIf="isLoggedIn  && !isLoggedInAdmin">Add to cart</button>
+      <button class="more-button" (click)="showMore()">Show More</button>
+    </div>
+  </div>
+</div>
