@@ -2,7 +2,7 @@
   <div class="main-container">
     <div class="header-container">
       <div class="logo-container">
-        <a routerLink="/home/shop"><img src="/logo/stepUpLogo.png" alt="StepUp Logo"></a>
+        <a routerLink="/home"><img src="/logo/stepUpLogo.png" alt="StepUp Logo"></a>
       </div>
       <div class="name-container">
         <h1>StepUp</h1>
@@ -21,9 +21,9 @@
           <a routerLinkActive="active" routerLink="admin/home" *ngIf="isLoggedInAdmin"><h2>Inventario</h2></a>
         </div> -->
         <div class="buttons-container">
-          <button class="circular-button" routerLink="/cart" *ngIf="isLoggedIn  && !isLoggedInAdmin"><img src="../../../assets/icons/IconShoppingCart.svg" title="Carrito de compras" alt="Cart Icon"></button>
+          <button class="circular-button" routerLink="/cart" *ngIf="isLoggedIn  && !isLoggedInAdmin"><img src="/icons/IconShoppingCart.svg" title="Carrito de compras" alt="Cart Icon"></button>
           <button class="circular-button" routerLink="/login" *ngIf="!isLoggedIn"><img src="icons/IconUser.svg" alt="User Icon"></button>
-          <button class="circular-button" (click)="logoutPress()" *ngIf="isLoggedIn"><img src="../../../assets/icons/IconLogout.svg" title="Cerrar sesión" alt="Logout Icon"></button>
+          <button class="circular-button" (click)="logoutPress()" *ngIf="isLoggedIn"><img src="/icons/IconLogout.svg" title="Cerrar sesión" alt="Logout Icon"></button>
         </div>
       </div>
     </div>

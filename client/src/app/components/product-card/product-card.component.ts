@@ -15,7 +15,7 @@ export class ProductCardComponent {
   constructor(private router: Router, private http: HttpClient) {}
 
   showMore() {
-    this.router.navigate([`/product/${this.product.productID}`]);
+    this.router.navigate([`/product-details/${this.product.id_producto}`]);
   }
 
   userID() {

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { JwtService } from '../../services/jwt.service';
 
 @Component({
   selector: 'app-header',
@@ -10,7 +11,7 @@ export class HeaderComponent {
   public isLoggedIn: boolean = false;
   public isLoggedInAdmin: boolean = false;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private jwtService: JwtService) {}
 
   public logoutPress(): void {
     localStorage.removeItem('token');
@@ -27,13 +28,13 @@ export class HeaderComponent {
 
   ngOnInit(): void {
     const token = localStorage.getItem('token');
-    // if (token) {
-    //   this.isLoggedIn = true;
-    //   const tokenDesencripted: any = decodeToken(token);
-    //   console.log(tokenDesencripted);
-    //   if (tokenDesencripted.user.role == 'admin') {
-    //     this.isLoggedInAdmin = true;
-    //   }
-    // }
+    if (token) {
+      this.isLoggedIn = true;
+      const tokenDesencripted: any = this.jwtService.decodeToken(token);
+      console.log(tokenDesencripted);
+      if (tokenDesencripted.rol_usuario == 'admin') {
+        this.isLoggedInAdmin = true;
+      }
+    }
   }
 }

@@ -32,6 +32,7 @@ export class ProductDetailsComponent implements OnInit {
 
   fetchProduct() {
     this.ecommerceService.productDetails(this.id_producto).subscribe((data: any) => {
+      console.log(data);
       if (this.isProduct(data)) {
         this.isLoadingProduct = false;
         this.productInventory = data;

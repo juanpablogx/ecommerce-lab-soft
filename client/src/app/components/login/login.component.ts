@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { EcommerceService } from '../../services/ecommerce.service';
-import { JwtService } from '../../services/jwt.service';
+
 
 @Component({
   selector: 'app-login',
@@ -19,7 +19,8 @@ export class LoginComponent {
     this.ecommerceService.login({correo: this.username, password: this.password}).subscribe((data:any) => {
       console.log('Login exitoso:', data);
       window.alert('Login exitoso.');
-      this.router.navigate(['/']);
+      localStorage.setItem('token', data.token);
+      this.router.navigate(['/home']);
     }
     )
   }

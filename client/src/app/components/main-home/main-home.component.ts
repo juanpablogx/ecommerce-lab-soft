@@ -68,18 +68,17 @@ export class MainHomeComponent {
   }
 
   filterProducts(event: any): void {
-  //   this.searchTerm = event.target.value;
-  //   console.log(event.target.value);
-  //   if (!this.searchTerm) {
-  //     // Si el término de búsqueda está vacío, mostrar todos los productos
-  //     this.products = this.allProducts;
-  //   } else {
-  //     // Filtrar los productos por nombre
-  //     this.products = this.allProducts.filter((product: any) =>
-  //       product.productName
-  //         .toLowerCase()
-  //         .includes(this.searchTerm.toLowerCase())
-  //     );
-  //   }
+    this.searchTerm = event.target.value;
+    if (!this.searchTerm) {
+      // Si el término de búsqueda está vacío, mostrar todos los productos
+      this.products = this.allProducts;
+    } else {
+      // Filtrar los productos por nombre
+      this.products = this.allProducts.filter((product: any) =>
+        product.nombre_producto
+          .toLowerCase()
+          .includes(this.searchTerm.toLowerCase())
+      );
+    }
   }
 }
