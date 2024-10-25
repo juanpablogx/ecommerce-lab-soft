@@ -1,0 +1,39 @@
+<div class="main-container">
+  <div class="product-container">
+    <div class="carrusel-container">
+      <div class="main-image-container">
+        <img src="{{selectedImage.url}}" alt="Imagen producto">
+      </div>
+      <div class="secondary-images-container">
+        @for (image of productInventory.imagenes; track $index) {
+          <img
+          [src]="image.url"
+          (click)="selectImage(image, $event)"
+          (mouseenter)="selectImage(image, $event)"
+          (mouseleave)="selectImage(image, $event)"
+          [class.active]="image === selectedImage">
+        }
+      </div>
+    </div>
+    <div class="info-container">
+      <div class="name-container">
+        <h1>{{productInventory.producto.nombre_producto}}</h1>
+        <h2>${{productInventory.producto.precio}}</h2>
+      </div>
+      <div class="quantity-container">
+        <button class="subtract" (click)="setQuantity(-1)">-</button>
+        <input type="number" value="{{quantity}}" disabled>
+        <button class="add" (click)="setQuantity(1)">+</button>
+      </div>
+      <div class="add-to-cart-container">
+        <button class="add-to-cart">
+          <img src="../../../assets/icons/IconShoppingCart.svg" alt="Cart Icon">
+          Añadir al carrito
+        </button>
+      </div>
+      <div class="description-container">
+        <p>{{productInventory.producto.descripcion_producto}}</p>
+      </div>
+    </div>
+  </div>
+</div>
