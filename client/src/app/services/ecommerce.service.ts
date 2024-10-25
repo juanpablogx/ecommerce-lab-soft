@@ -17,5 +17,8 @@ export class EcommerceService {
   register(user: User){
     return this.http.post(`${this.url}/usuarios/register`, user);
   }
-
+  
+  getAllProducts(){
+    return this.http.get(`${this.url}/productos`);
+  }
 }
