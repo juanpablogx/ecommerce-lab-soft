@@ -9,12 +9,9 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { HeaderComponent } from './components/header/header.component';
 import { RegisterComponent } from './components/register/register.component';
-<<<<<<< HEAD
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
-=======
 import { MainHomeComponent } from './components/main-home/main-home.component';
 import { ProductCardComponent } from './components/product-card/product-card.component';
->>>>>>> 83abfd820356d2fc21208173fbaa079f1851299b
 
 @NgModule({
   declarations: [
@@ -22,13 +19,10 @@ import { ProductCardComponent } from './components/product-card/product-card.com
     LoginComponent,
     HeaderComponent,
     RegisterComponent,
-<<<<<<< HEAD
     AppComponent,
-    ProductDetailsComponent
-=======
+    ProductDetailsComponent,
     MainHomeComponent,
     ProductCardComponent
->>>>>>> 83abfd820356d2fc21208173fbaa079f1851299b
   ],
   imports: [
     BrowserModule,
