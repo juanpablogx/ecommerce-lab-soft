@@ -1,0 +1,139 @@
+.main-container{
+  margin-top: 14vh;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 30px;
+}
+
+.product-container{
+  width: 80%;
+  display:flex;
+  max-height: 83vh;
+  margin-top: 10px;
+  justify-content: space-between;
+}
+
+.carrusel-container{
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-image-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80%;
+}
+
+.main-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.secondary-images-container{
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 10px;
+  height: 20%;
+}
+
+.secondary-images-container img{
+  width: 30%;
+  height: 100%;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.secondary-images-container img:hover{
+  border: 1px solid #010F28;
+  border-radius: 5px;
+  filter: invert(0.3);
+}
+
+.info-container{
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: baseline;
+  color: #010F28;
+}
+
+.quantity-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quantity-container button{
+  background-color: white;
+  color: #010F28;
+  border-radius: 50%;
+  border: 1px solid #010F28;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.quantity-container input{
+  border:none;
+  text-align: center;
+  font-size: 16px;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  width: 40px;
+  margin-left: 10px;
+}
+
+.quantity-container button:hover {
+  background-color: #010F28; /* Cambia el color de fondo al hacer hover */
+  color: white;
+  border: 1px solid #010714; /* Cambia el color del borde al hacer hover */
+}
+
+.add-to-cart-container{
+  margin: 25px ;
+}
+
+.add-to-cart{
+  padding: 10px 20px; /* Espaciado interno */
+  background-color: #011232; /* Color de fondo */
+  color: white; /* Color del texto */
+  border: 1px solid #011232;
+  border-radius: 15px; /* Borde redondeado */
+  cursor: pointer; /* Cursor al pasar */
+  transition: background-color 0.3s ease; /* Transición suave */
+  margin-right: 5px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.add-to-cart:hover {
+  background-color: white; /* Color de fondo al pasar */
+  color:#010714;
+  border: 1px solid #010714;
+  filter: invert(0);
+}
+
+.add-to-cart img{
+  width: 25px;
+  height: 25px;
+  margin-right: 5px;
+  filter: invert(1);
+}
+
+.add-to-cart-container:hover > .add-to-cart img {
+  filter: none;
+}
