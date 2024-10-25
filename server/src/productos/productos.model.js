@@ -24,4 +24,11 @@ const Producto = sequelize.define('Producto', {
   timestamps: false,
 });
 
+Producto.associate = (models) => {
+  Producto.hasMany(models.ProductoInventario, {
+    foreignKey: 'id_producto',
+    as: 'productoInventario'
+  });
+};
+
 module.exports = Producto;
