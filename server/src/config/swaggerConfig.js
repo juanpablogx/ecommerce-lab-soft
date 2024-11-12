@@ -9,6 +9,15 @@ const swaggerOptions = {
       version: "1.0.0",
       description: "Documentación automática de la API de StepUp con Swagger",
     },
+    components: {
+      securitySchemes: {
+        bearerAuth: {
+          type: "http",
+          scheme: "bearer",
+          bearerFormat: "JWT",
+        },
+      }
+    },
     servers: [
       {
         url: "http://localhost:3000", // Cambia la URL según tu entorno
