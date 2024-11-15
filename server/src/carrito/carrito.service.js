@@ -96,10 +96,37 @@ const removeProductoCarrito = async (id) => {
   });
 };
 
+const findCarritoById = async (id) => {
+  return await Carrito.findOne({
+    where: {
+      id_carrito: id,
+    },
+    include: [
+      {
+        model: ProductoCarrito,
+        as: 'productosCarrito',
+        include: [
+          {
+            model: ProductoInventario,
+            as: 'productoInventario',
+            include: [
+              {
+                model: Producto,
+                as: 'producto'
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  });
+};
+
 module.exports = {
   addproductoCarrito,
   findActiveCarrito,
   updateQuantityProductoCarrito,
   cancelCarrito,
   removeProductoCarrito,
+  findCarritoById
 };
