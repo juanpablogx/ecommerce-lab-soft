@@ -1,6 +1,5 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../database/connection');
-const Usuario = require('../usuarios/usuarios.model');
 
 const Carrito = sequelize.define('Carrito', {
   id_carrito: {
@@ -59,6 +58,11 @@ Carrito.associate = (models) => {
     foreignKey: 'id_carrito',
     as: 'productosCarrito'
   });
+
+  Carrito.hasOne(models.Orden, {
+    foreignKey: 'id_carrito',
+    as: 'orden'
+  })
 };
 
 ProductoCarrito.associate = (models) => {

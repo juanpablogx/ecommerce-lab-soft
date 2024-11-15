@@ -98,78 +98,76 @@ router.post('/', createProductoCarritoController);
  *         content:
  *           application/json:
  *             schema:
- *               type: array
- *               items:
- *                 type: object
- *                 properties:
- *                   id_carrito:
- *                     type: integer
- *                     example: 1
- *                   id_usuario:
- *                     type: integer
- *                     example: 1
- *                   estado_carrito:
- *                     type: string
- *                     example: "pendiente"
- *                   fecha_creacion_carrito:
- *                     type: string
- *                     example: "2024-01-01"
- *                   productosCarrito:
- *                     type: array
- *                     items:
- *                       type: object
- *                       properties:
- *                         id_producto_carrito:
- *                           type: integer
- *                           example: 1
- *                         id_carrito:
- *                           type: integer
- *                           example: 1
- *                         id_producto_inventario:
- *                           type: integer
- *                           example: 2
- *                         cantidad:
- *                           type: integer
- *                           example: 2
- *                         productoInventario:
- *                           type: object
- *                           properties:
- *                             id_producto_inventario:
- *                               type: integer
- *                               example: 2
- *                             id_producto:
- *                               type: integer
- *                               example: 1
- *                             talla_inventario:
- *                               type: string
- *                               example: "40"
- *                             stock_max:
- *                               type: integer
- *                               example: 100
- *                             stock_min:
- *                               type: integer
- *                               example: 0
- *                             stock:
- *                               type: integer
- *                               example: 10
- *                             producto:
- *                               type: object
- *                               properties:
- *                                 id_producto:
- *                                   type: integer
- *                                   example: 1
- *                                 nombre_producto:
- *                                   type: string
- *                                   example: "Producto 1"
- *                                 descripcion_producto:
- *                                   type: string
- *                                   example: "Descripción del producto 1"
- *                                 categoria:
- *                                   type: string
- *                                   example: "Categoria 1"
- *                                 precio:
- *                                   type: number
- *                                   example: 150000.00
+ *               type: object
+ *               properties:
+ *                 id_carrito:
+ *                   type: integer
+ *                   example: 1
+ *                 id_usuario:
+ *                   type: integer
+ *                   example: 1
+ *                 estado_carrito:
+ *                   type: string
+ *                   example: "pendiente"
+ *                 fecha_creacion_carrito:
+ *                   type: string
+ *                   example: "2024-01-01"
+ *                 productosCarrito:
+ *                   type: array
+ *                   items:
+ *                     type: object
+ *                     properties:
+ *                       id_producto_carrito:
+ *                         type: integer
+ *                         example: 1
+ *                       id_carrito:
+ *                         type: integer
+ *                         example: 1
+ *                       id_producto_inventario:
+ *                         type: integer
+ *                         example: 2
+ *                       cantidad:
+ *                         type: integer
+ *                         example: 2
+ *                       productoInventario:
+ *                         type: object
+ *                         properties:
+ *                           id_producto_inventario:
+ *                             type: integer
+ *                             example: 2
+ *                           id_producto:
+ *                             type: integer
+ *                             example: 1
+ *                           talla_inventario:
+ *                             type: string
+ *                             example: "40"
+ *                           stock_max:
+ *                             type: integer
+ *                             example: 100
+ *                           stock_min:
+ *                             type: integer
+ *                             example: 0
+ *                           stock:
+ *                             type: integer
+ *                             example: 10
+ *                           producto:
+ *                             type: object
+ *                             properties:
+ *                               id_producto:
+ *                                 type: integer
+ *                                 example: 1
+ *                               nombre_producto:
+ *                                 type: string
+ *                                 example: "Producto 1"
+ *                               descripcion_producto:
+ *                                 type: string
+ *                                 example: "Descripción del producto 1"
+ *                               categoria:
+ *                                 type: string
+ *                                 example: "Categoria 1"
+ *                               precio:
+ *                                 type: number
+ *                                 example: 150000.00
  *       400:
  *         description: Error al obtener todos los productos en el carrito
  */

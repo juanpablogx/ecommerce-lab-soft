@@ -21,6 +21,7 @@ app.use('/usuarios', require('./usuarios/usuarios.routes'));
 app.use('/img_productos', require('./img_productos/img_productos.routes'));
 app.use('/productos-inventario', require('./productos-inventario/productos-inventario.routes'));
 app.use('/carrito', authenticationUserMiddleware('client'), require('./carrito/carrito.routes'));
+app.use('/ordenes', authenticationUserMiddleware('client'), require('./ordenes/ordenes.routes'));
 
 app.get('/', (req, res) => {
   res.send('Ecommerce funcionando');
