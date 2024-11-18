@@ -4,6 +4,9 @@ const serviceUsuarios = require('../usuarios/usuarios.service');
 
 const authenticationUserMiddleware = (role = null) => (req, res, next) => {
   const token = headers.getAuthTokenFromHeader(req);
+  console.log('token', token);
+ 
+
   if (!token) return res.status(401).json({error: 'No se recibio token'});
 
   jwt.verifyAccessToken(token, (err, user) => {

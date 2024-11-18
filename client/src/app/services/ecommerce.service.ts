@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../interfaces/user.interface';
 import { Product } from '../interfaces/product.interface';
 import { ImageProduct } from '../interfaces/image-product.interface';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class EcommerceService {
   url: string = 'http://localhost:3000';
@@ -16,20 +16,38 @@ export class EcommerceService {
     return this.http.post(`${this.url}/usuarios/login`, user);
   }
 
-  register(user: User){
+  register(user: User) {
     return this.http.post(`${this.url}/usuarios/register`, user);
   }
 
-  getAllProducts(){
+  getAllProducts() {
     return this.http.get(`${this.url}/productos`);
   }
 
-  getProductsByCategory(category: string){
+  getProductsByCategory(category: string) {
     return this.http.get(`${this.url}/productos/categoria/${category}`);
   }
 
-  productDetails(id_producto: number){
-    return this.http.get<Product[] | Object>(`${this.url}/productos/${id_producto}`);
+  productDetails(id_producto: number) {
+    return this.http.get<Product[] | Object>(
+      `${this.url}/productos/${id_producto}`
+    );
   }
 
+  addProductToCart(id_product_inventory: number, quantity: number) {
+    const token = localStorage.getItem('token');
+    console.log(token);
+
+    const headers = new HttpHeaders({
+      authorization: `${token}`, // Incluye el token en el header
+    });
+    return this.http.post(
+      `${this.url}/carrito`,
+      {
+        id_producto_inventario: id_product_inventory,
+        cantidad: quantity,
+      },
+      { headers }
+    );
+  }
 }

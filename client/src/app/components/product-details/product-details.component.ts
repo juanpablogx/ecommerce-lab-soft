@@ -71,4 +71,11 @@ export class ProductDetailsComponent implements OnInit {
     this.quantity = this.quantity+quantity;
   }
 
+  addProductToCart() {
+    console.log(this.product.id_producto);
+    this.ecommerceService.addProductToCart(this.product.id_producto, this.quantity).subscribe((data: any) => {
+      console.log(data);
+    });
+  }
+
 }
