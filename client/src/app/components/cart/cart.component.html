@@ -15,7 +15,7 @@
             <div class="details-container">
               <div class="row">
                 <h1 class="product-name">{{product.productoInventario.producto.nombre_producto}}</h1>
-                <h2 id="product-price" class="product-price">${{product.productoInventario.producto.precio}}</h2>
+                <h2 id="product-price" class="product-price">{{product.productoInventario.producto.precio | currency:'$':'symbol':'1.2-2'}}</h2>
               </div>
               <p class="product-size">Talla: Única</p>
               <div class="row">
@@ -42,13 +42,13 @@
             <div class="price-container">
               <div class="product-price" *ngFor="let product of productsCart">
                 <h5 class="description-letter">{{product.productoInventario.producto.nombre_producto}} x {{product.cantidad}}</h5>
-                <h5 class="description-letter">{{(product.productoInventario.producto.precio* product.cantidad).toFixed(2)}}</h5>
+                <h5 class="description-letter">{{(product.productoInventario.producto.precio* product.cantidad) | currency:'$':'symbol':'1.2-2'}}</h5>
               </div>
             </div>
             <!-- Total -->
             <div class="total-container">
               <h5 class="description-letter">Total:</h5>
-              <h5 class="description-letter">{{(priceTotal).toFixed(2)}}</h5>
+              <h5 class="description-letter">{{priceTotal | currency:'$':'symbol':'1.2-2'}}</h5>
             </div>
           </div>
           <!-- Botón de pagar -->

@@ -24,7 +24,7 @@
     <div class="info-container">
       <div class="name-container">
         <h1>{{product.nombre_producto}}</h1>
-        <h2>${{product.precio}}</h2>
+        <h2>{{product.precio | currency:'$':'symbol':'1.2-2'}}</h2>
       </div>
       <div class="quantity-container">
         <button class="subtract" (click)="setQuantity(-1)">-</button>
