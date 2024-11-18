@@ -39,7 +39,7 @@ export class EcommerceService {
     console.log(token);
 
     const headers = new HttpHeaders({
-      authorization: `${token}`, // Incluye el token en el header
+      authorization: `bearer ${token}`, // Incluye el token en el header
     });
     return this.http.post(
       `${this.url}/carrito`,
@@ -49,5 +49,13 @@ export class EcommerceService {
       },
       { headers }
     );
+  }
+
+  getCartProducts(){
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      authorization: `bearer ${token}`,
+    });
+    return this.http.get(`${this.url}/carrito`, { headers });
   }
 }

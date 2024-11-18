@@ -10,21 +10,21 @@
         <div *ngFor="let product of productsCart">
           <div class="main-product-container">
             <div class="image-container">
-              <img src="{{product.images[0].ImageURL}}" alt="CapClock Logo">
+              <img src="/img/backgrounds/back4.jpg" alt="CapClock Logo">
             </div>
             <div class="details-container">
               <div class="row">
-                <h1 class="product-name">{{product.productName}}</h1>
-                <h2 id="product-price" class="product-price">${{product.price}}</h2>
+                <h1 class="product-name">{{product.productoInventario.producto.nombre_producto}}</h1>
+                <h2 id="product-price" class="product-price">${{product.productoInventario.producto.precio}}</h2>
               </div>
               <p class="product-size">Talla: Única</p>
               <div class="row">
                 <!--<p class="product-description">{{product.description}}</p>-->
                 <div class="quantity-container">
-                    <button class="quantity-button" (click)="setQuantity(-1)">-</button>
-                    <input type="number" class="quantity-input" value="{{product.quantity}}" disabled>
-                    <button class="quantity-button" (click)="setQuantity(1)">+</button>
-                  <button class="circular-button" (click)="deleteCart()"><img src="../../../assets/icons/IconTrash.svg" alt="Trash Icon"></button>
+                    <button class="quantity-button" (click)="setQuantity(product,-1)">-</button>
+                    <input type="number" class="quantity-input" value="{{product.cantidad}}" disabled>
+                    <button class="quantity-button" (click)="setQuantity(product,1)">+</button>
+                  <button class="circular-button" (click)="deleteCart()"><img src="icons/IconTrash.svg" alt="Trash Icon"></button>
                 </div>
               </div>
             </div>
@@ -41,8 +41,8 @@
             <!-- Lista de productos y precios -->
             <div class="price-container">
               <div class="product-price" *ngFor="let product of productsCart">
-                <h5 class="description-letter">{{product.productName}}</h5>
-                <h5 class="description-letter">{{(product.price * product.quantity).toFixed(2)}}</h5>
+                <h5 class="description-letter">{{product.productoInventario.producto.nombre_producto}} x {{product.cantidad}}</h5>
+                <h5 class="description-letter">{{(product.productoInventario.producto.precio* product.cantidad).toFixed(2)}}</h5>
               </div>
             </div>
             <!-- Total -->

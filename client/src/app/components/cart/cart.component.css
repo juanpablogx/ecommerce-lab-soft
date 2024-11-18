@@ -99,3 +99,153 @@
 .description-letter {
   margin: 0;
 }
+
+
+/*Product Styles*/
+.main-product-container {
+  display: flex;
+  border: 2px solid black;
+  border-radius: 15px;
+  padding: 20px;
+  margin: 15px;
+}
+
+.image-container {
+  width: 150px;
+  height: 150px;
+  border-radius: 15px;
+  overflow: hidden;
+  margin-right: 20px;
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.details-container {
+  flex: 1;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.product-description {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: gray;
+  width: fit-content;
+  margin-right: 10px;
+}
+
+.product-name {
+  font-size: 28px; /* Tamaño de fuente más grande */
+  margin-bottom: 5px; /* Menos espacio entre el nombre y la talla */
+}
+
+.product-size {
+  font-size: 18px; /* Tamaño de fuente de la talla */
+  margin-bottom: 10px; /* Espacio después de la talla */
+}
+
+.product-info {
+  margin-bottom: 10px;
+}
+
+.price-container {
+  display: flex;
+  justify-content: flex-end; /* Alinea el precio a la derecha */
+}
+
+.product-price {
+  font-size: 24px; /* Tamaño de fuente del precio */
+}
+
+/* Resto del CSS sin cambios */
+
+
+.quantity-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.quantity-button {
+  /* padding: 5px 10px; */
+  width: 30px;
+  height: 30px;
+  border-radius: 40%;
+  background-color: transparent;
+  /* background-color: #011232; */
+  color: #011232;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border: 1px solid #010714; /* Borde del botón */
+  font-weight: bold; /* Hace que el número sea en negrilla */
+  color: #010714; /* Color del número */
+}
+
+.quantity-button:hover {
+  background-color: #011232;
+  font-weight: bold; /* Hace que el número sea en negrilla */
+  color: white;
+}
+
+.quantity-input {
+  width: 30px;
+  height: 30px;
+  border: none; /* Elimina el borde del cuadro */
+  align-items: center;
+  font-weight: bold; /* Hace que el número sea en negrilla */
+  color: #010714; /* Color del número */
+  margin-left: 20px; /* Espacio entre el botón y el cuadro */
+}
+
+.add-to-cart-button {
+  padding: 10px 20px;
+  background-color: #011232;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-to-cart-button:hover {
+  background-color: white;
+  color: #011232;
+}
+
+.circular-button img {
+  width: 26px;
+  height: 26px;
+}
+
+.circular-button:hover {
+  background-color: red; /* Cambia el color de fondo al hacer hover */
+  color: white;
+}
+
+.circular-button:hover img {
+  filter: invert(100%); /* Invierte los colores del ícono al hacer hover */
+}
+
+.circular-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: white; /* Color del ícono */
+  border: none;
+  margin-left: 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  background-color: transparent;
+  align-items: center;
+  border: 1px solid #010714; /* Borde del botón */
+}

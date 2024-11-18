@@ -4,7 +4,7 @@ const getAuthTokenFromHeader = (request) => {
   if (!authHeader) return null;
 
   const token = authHeader.split(' ')[1];
-  return authHeader;
+  return token;
 };
 
 module.exports = {

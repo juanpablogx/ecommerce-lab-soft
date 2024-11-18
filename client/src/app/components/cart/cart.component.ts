@@ -1,17 +1,41 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { EcommerceService } from '../../services/ecommerce.service';
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.css'
 })
-export class CartComponent {
+export class CartComponent implements OnInit{
   page!: string;
   title!: string;
   imageRoute!: string;
   productsCart: any;
   userID: any
   priceTotal: any
+
+  constructor(private ecommerceService: EcommerceService) { }
+
+  ngOnInit(): void {
+    this.getCartProducts();
+  }
+
+  getCartProducts(){  
+    this.ecommerceService.getCartProducts().subscribe((data: any) => {  
+      console.log(data.productosCarrito[0].productoInventario.producto.nombre_producto);
+      this.productsCart = data.productosCarrito;
+      this.calculateTotalPrice(); 
+    })
+  }
+
+  calculateTotalPrice(){
+    this.priceTotal = 0;
+    for (let i = 0; i < this.productsCart.length; i++) {
+      this.priceTotal += (this.productsCart[i].productoInventario.producto.precio * this.productsCart[i].cantidad);
+    }
+  }
+
+
 
   // constructor(private route: ActivatedRoute, private http: HttpClient, private router: Router) { }
 
@@ -56,7 +80,8 @@ export class CartComponent {
 
   }
 
-  setQuantity(i: number){
+  setQuantity(product: any, i: number){
+    product.cantidad = product.cantidad+i;
   }
 
 
