@@ -58,4 +58,12 @@ export class EcommerceService {
     });
     return this.http.get(`${this.url}/carrito`, { headers });
   }
+
+  deleteCartProduct(id: number){
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      authorization: `bearer ${token}`,
+    });
+    return this.http.delete(`${this.url}/carrito/producto/${id}`, { headers });
+  }
 }

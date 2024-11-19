@@ -4,38 +4,43 @@ import { EcommerceService } from '../../services/ecommerce.service';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
-  styleUrl: './cart.component.css'
+  styleUrl: './cart.component.css',
 })
-export class CartComponent implements OnInit{
+export class CartComponent implements OnInit {
   page!: string;
   title!: string;
   imageRoute!: string;
   productsCart: any;
-  userID: any
-  priceTotal: any
+  userID: any;
+  priceTotal: any;
 
-  constructor(private ecommerceService: EcommerceService) { }
+  constructor(private ecommerceService: EcommerceService) {}
 
   ngOnInit(): void {
     this.getCartProducts();
   }
 
-  getCartProducts(){  
-    this.ecommerceService.getCartProducts().subscribe((data: any) => {  
-      console.log(data.productosCarrito[0].productoInventario.producto.nombre_producto);
+  getCartProducts() {
+    this.ecommerceService.getCartProducts().subscribe((data: any) => {
+      console.log(
+        data.productosCarrito[0].productoInventario.producto.nombre_producto
+      );
       this.productsCart = data.productosCarrito;
-      this.calculateTotalPrice(); 
-    })
+      this.calculateTotalPrice();
+    });
   }
 
-  calculateTotalPrice(){
+  calculateTotalPrice() {
     this.priceTotal = 0;
     for (let i = 0; i < this.productsCart.length; i++) {
-      this.priceTotal += (this.productsCart[i].productoInventario.producto.precio * this.productsCart[i].cantidad);
+      this.priceTotal +=
+        this.productsCart[i].productoInventario.producto.precio *
+        this.productsCart[i].cantidad;
     }
   }
 
 
+    
 
   // constructor(private route: ActivatedRoute, private http: HttpClient, private router: Router) { }
 
@@ -61,7 +66,7 @@ export class CartComponent implements OnInit{
   //   for (let i = 0; i < this.productsCart.length; i++) {
   //     this.priceTotal += (this.productsCart[i].price * this.productsCart[i].quantity);
   //   }
-  // }  
+  // }
 
   // pagarProductos() {
   //   const token:any = localStorage.getItem('token');
@@ -73,16 +78,25 @@ export class CartComponent implements OnInit{
   //   });
   // }
 
-  pagarProductos() { 
+  pagarProductos() {}
+
+  deleteCart(product: any) {
+    this.ecommerceService
+      .deleteCartProduct(product.id_producto_carrito)
+      .subscribe((data: any) => {
+        console.log(data);
+        
+        // Eliminar el producto del carrito
+        this.productsCart = this.productsCart.filter(
+          (productCart: any) => productCart.id_producto_carrito !== product.id_producto_carrito
+        );
+
+        // Calcular el precio total
+        this.calculateTotalPrice();
+      });
   }
 
-  deleteCart(){
-
+  setQuantity(product: any, i: number) {
+    product.cantidad = product.cantidad + i;
   }
-
-  setQuantity(product: any, i: number){
-    product.cantidad = product.cantidad+i;
-  }
-
-
 }

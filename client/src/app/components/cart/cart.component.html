@@ -24,7 +24,7 @@
                     <button class="quantity-button" (click)="setQuantity(product,-1)">-</button>
                     <input type="number" class="quantity-input" value="{{product.cantidad}}" disabled>
                     <button class="quantity-button" (click)="setQuantity(product,1)">+</button>
-                  <button class="circular-button" (click)="deleteCart()"><img src="icons/IconTrash.svg" alt="Trash Icon"></button>
+                  <button class="circular-button" (click)="deleteCart(product)"><img src="icons/IconTrash.svg" alt="Trash Icon"></button>
                 </div>
               </div>
             </div>
