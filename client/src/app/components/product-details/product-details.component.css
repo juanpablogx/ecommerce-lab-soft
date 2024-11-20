@@ -146,3 +146,104 @@
   background-size: cover;
   background-position: center;
 }
+.options-container {
+  display: flex;
+  justify-content: start;
+  align-items: flex-end; /* Alineación de los elementos en la base */
+  gap: 20px; /* Espacio entre los elementos */
+  margin: 20px 0; /* Espaciado externo */
+  width: 100%; /* Para garantizar alineación */
+}
+
+.quantity-container {
+  display: flex;
+  flex-direction: column;
+  align-items: start; /* Alineación del texto del label */
+}
+
+.quantity-container label {
+  font-weight: bold;
+  font-size: 16px; /* Tamaño del texto consistente */
+  margin-bottom: 5px;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quantity-controls button {
+  background-color: white;
+  color: #010F28;
+  border-radius: 50%;
+  border: 1px solid #010F28;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.quantity-controls button:hover {
+  background-color: #010F28; /* Color de fondo al hacer hover */
+  color: white;
+  border: 1px solid #010714; /* Cambia el color del borde al hacer hover */
+}
+
+.quantity-controls input {
+  border: none;
+  text-align: center;
+  font-size: 16px;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  width: 40px;
+
+}
+
+.size-selector-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Alineación consistente con cantidad */
+}
+
+.size-selector-container label {
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+#size-selector {
+  width: 100%;
+  padding: 5px 15px; /* Espaciado interno */
+  border: 1px solid #010F28; /* Borde en armonía con los botones */
+  border-radius: 15px; /* Borde redondeado */
+  background-color: white; /* Fondo blanco */
+  color: #010F28; /* Texto oscuro */
+  font-size: 16px; /* Tamaño de fuente consistente */
+  cursor: pointer;
+  transition: all 0.3s ease; /* Transición suave */
+}
+
+/* #size-selector:hover {
+  background-color: #010F28; 
+  color: white; 
+}
+
+#size-selector:focus {
+  outline: none;
+  border: 1px solid #011232; 
+  box-shadow: 0 0 4px #011232; 
+} */
+
+#size-selector option {
+  background-color: white; 
+  color: #010F28; 
+}
+
+#size-selector option:checked {
+  background-color: #010F28; 
+  color: white; 
+}

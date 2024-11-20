@@ -3,42 +3,64 @@
     <div class="carrusel-container">
       <div class="main-image-container">
         @if (selectedImage !== undefined) {
-          <img src="{{selectedImage.url}}" alt="Imagen producto">
+        <img src="{{ selectedImage.url }}" alt="Imagen producto" />
         } @else {
-          <div class="no-image"></div>
+        <div class="no-image"></div>
         }
       </div>
       <div class="secondary-images-container">
-        @if (product.imagenes !== undefined) {
-          @for (image of product.imagenes; track $index) {
-            <img
-            [src]="image.url"
-            (click)="selectImage(image, $event)"
-            (mouseenter)="selectImage(image, $event)"
-            (mouseleave)="selectImage(image, $event)"
-            [class.active]="image === selectedImage">
-          }
-        }
+        @if (product.imagenes !== undefined) { @for (image of product.imagenes;
+        track $index) {
+        <img
+          [src]="image.url"
+          (click)="selectImage(image, $event)"
+          (mouseenter)="selectImage(image, $event)"
+          (mouseleave)="selectImage(image, $event)"
+          [class.active]="image === selectedImage"
+        />
+        } }
       </div>
     </div>
     <div class="info-container">
       <div class="name-container">
-        <h1>{{product.nombre_producto}}</h1>
-        <h2>{{product.precio | currency:'$':'symbol':'1.2-2'}}</h2>
+        <h1>{{ product.nombre_producto }}</h1>
+        <h2>{{ product.precio | currency : "$" : "symbol" : "1.2-2" }}</h2>
       </div>
-      <div class="quantity-container">
-        <button class="subtract" (click)="setQuantity(-1)">-</button>
-        <input type="number" value="{{quantity}}" disabled>
-        <button class="add" (click)="setQuantity(1)">+</button>
+      <div class="options-container">
+        <div class="quantity-container">
+          <label for="quantity-input">Cantidad:</label>
+          <div class="quantity-controls">
+            <button class="subtract" (click)="setQuantity(-1)">-</button>
+            <input
+              id="quantity-input"
+              type="number"
+              value="{{ quantity }}"
+              disabled
+            />
+            <button class="add" (click)="setQuantity(1)">+</button>
+          </div>
+        </div>
+        <div class="size-selector-container">
+          <label for="size-selector">Talla:</label>
+          <select id="size-selector" [(ngModel)]="selectedSize">
+            <option
+              *ngFor="let product of product.productoInventario"
+              [ngValue]="product"
+            >
+              {{ product.talla_inventario }}
+            </option>
+          </select>
+        </div>
       </div>
+
       <div class="add-to-cart-container">
         <button class="add-to-cart" (click)="addProductToCart()">
-          <img src="/icons/IconShoppingCart.svg" alt="Cart Icon">
+          <img src="/icons/IconShoppingCart.svg" alt="Cart Icon" />
           Añadir al carrito
         </button>
       </div>
       <div class="description-container">
-        <p>{{product.descripcion_producto}}</p>
+        <p>{{ product.descripcion_producto }}</p>
       </div>
     </div>
   </div>

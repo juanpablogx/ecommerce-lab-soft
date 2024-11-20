@@ -24,6 +24,8 @@ export class ProductDetailsComponent implements OnInit {
   isError = false;
   errorMessage: any = '';
 
+  selectedSize!: any;
+
 
   constructor(private activatedRoute: ActivatedRoute, private ecommerceService: EcommerceService) {}
 
@@ -38,6 +40,9 @@ export class ProductDetailsComponent implements OnInit {
         this.isLoadingProduct = false;
         this.product = data;
         this.selectedImage = this.product.imagenes[0];
+        console.log('Inventario', this.product.productoInventario);
+        this.selectedSize = this.product.productoInventario[0].talla_inventario;
+        
       } else {
         this.isError = true;
         this.errorMessage = data;
@@ -72,8 +77,8 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   addProductToCart() {
-    console.log(this.product.id_producto);
-    this.ecommerceService.addProductToCart(this.product.id_producto, this.quantity).subscribe((data: any) => {
+    console.log('talla',this.selectedSize.id_producto)
+    this.ecommerceService.addProductToCart(this.selectedSize.id_producto_inventario, this.quantity).subscribe((data: any) => {
       console.log(data);
     });
   }

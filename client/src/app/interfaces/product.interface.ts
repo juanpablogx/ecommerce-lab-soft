@@ -7,4 +7,5 @@ export interface Product {
   categoria: string
   precio: number
   imagenes: ImageProduct[]
+  productoInventario: any[]
 }
