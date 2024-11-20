@@ -61,7 +61,7 @@ const {
  *         description: Error al crear el producto
  */
 router.post('/', createController);
-router.get('/', findAllController);
+
 /**
  * @swagger
  * /productos:
@@ -90,8 +90,8 @@ router.get('/', findAllController);
  *       400:
  *         description: Error al obtener los productos
  */
+router.get('/', findAllController);
 
-router.get('/:id', findByIdController);
 /**
  * @swagger
  * /productos/{id}:
@@ -116,17 +116,65 @@ router.get('/:id', findByIdController);
  *               properties:
  *                 id_producto:
  *                   type: integer
+ *                   example: 1
  *                 nombre_producto:
  *                   type: string
- *                 descripcion_producto:
+ *                   example: "Nike Air"
+ *                 descripcion_producto: 
  *                   type: string
- *                 categoria:
+ *                   example: "Nike Air excelentes zapatillas"
+ *                 categoria: 
  *                   type: string
+ *                   example: "mujer"
+ *                 precio: 
+ *                   type: number
+ *                   example: 375000.00
+ *                 productoInventario:
+ *                   type: array
+ *                   items:
+ *                     type: object
+ *                     properties:
+ *                       id_producto_inventario:
+ *                         type: integer
+ *                         example: 1
+ *                       id_producto:
+ *                         type: integer
+ *                         example: 1
+ *                       talla_inventario:
+ *                         type: string
+ *                         example: "40"
+ *                       stock_max:
+ *                         type: integer
+ *                         example: 100
+ *                       stock_min:
+ *                         type: integer
+ *                         example: 0
+ *                       stock:
+ *                         type: integer
+ *                         example: 10
+ *                 imagenes: 
+ *                   type: array
+ *                   items:
+ *                     type: object
+ *                     properties:
+ *                       id_imagen_producto:
+ *                         type: integer
+ *                         example: 1
+ *                       id_producto:
+ *                         type: integer
+ *                         example: 1
+ *                       url:
+ *                         type: string
+ *                         example: https://res.cloudinary.com/ds1gp94gs/image/upload/v1729888048/productos/uzznqom3jxhitnktsyla.webp
+ * 
  *       404:
  *         description: Producto no encontrado con el ID proporcionado
  *       400:
  *         description: Error al buscar el producto
  */
+router.get('/:id', findByIdController);
+
+
 
 router.get('/categoria/:category', findByCategoryController);
 
