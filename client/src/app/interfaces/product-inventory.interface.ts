@@ -13,6 +13,13 @@ export interface ProductInventory {
 }
 
 export interface ProductInventoryAdd {
+  id_producto_inventario?: number
+  talla_inventario: string
+  stock: number
+}
+
+export interface ProductInventoryEditResult {
+  id_producto_inventario: number
   talla_inventario: string
   stock: number
 }

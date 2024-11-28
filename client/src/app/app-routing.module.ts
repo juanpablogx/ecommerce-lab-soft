@@ -6,6 +6,7 @@ import { ProductDetailsComponent } from './components/product-details/product-de
 import { MainHomeComponent } from './components/main-home/main-home.component';
 import { CartComponent } from './components/cart/cart.component';
 import { IndividualProductAddComponent } from './components/individual-product-add/individual-product-add.component';
+import { IndividualProductEditComponent } from './components/individual-product-edit/individual-product-edit.component';
 
 const routes: Routes = [
   {path: '', component: MainHomeComponent},
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path: 'home', component: MainHomeComponent},
   {path: 'cart', component: CartComponent},
   {path: 'admin/product-add', component: IndividualProductAddComponent},
+  {path: 'admin/product-edit/:id_producto', component: IndividualProductEditComponent},
 ];
 
 @NgModule({

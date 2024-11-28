@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../interfaces/user.interface';
 import { Product, ProductAdd } from '../interfaces/product.interface';
 import { ImageProduct } from '../interfaces/image-product.interface';
-import { ProductInventoryAdd } from '../interfaces/product-inventory.interface';
+import { ProductInventoryAdd, ProductInventoryEditResult } from '../interfaces/product-inventory.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -97,5 +97,23 @@ export class EcommerceService {
     const formData = new FormData();
     formData.append('image', image);
     return this.http.post(`${this.url}/img_productos/${idProduct}`, formData, { headers });
+  }
+
+  editProduct(product: ProductAdd, idProduct: number) {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      authorization: `bearer ${token}`,
+    });
+
+    return this.http.put(`${this.url}/productos/${idProduct}`, product, { headers });
+  }
+
+  editProductInventory(productInventory: ProductInventoryAdd, idProductInventory: number) {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      authorization: `bearer ${token}`,
+    });
+
+    return this.http.put(`${this.url}/productos-inventario/${idProductInventory}`, productInventory, { headers });
   }
 }
