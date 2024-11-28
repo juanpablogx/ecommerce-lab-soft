@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../interfaces/user.interface';
-import { Product } from '../interfaces/product.interface';
+import { Product, ProductAdd } from '../interfaces/product.interface';
 import { ImageProduct } from '../interfaces/image-product.interface';
+import { ProductInventoryAdd } from '../interfaces/product-inventory.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -65,5 +66,36 @@ export class EcommerceService {
       authorization: `bearer ${token}`,
     });
     return this.http.delete(`${this.url}/carrito/producto/${id}`, { headers });
+  }
+
+  createProduct(product: ProductAdd) {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      authorization: `bearer ${token}`,
+    });
+    return this.http.post(`${this.url}/productos`, product, { headers });
+  }
+
+  createProductInventory(idProduct: number, productInventory: ProductInventoryAdd) {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      authorization: `bearer ${token}`,
+    });
+    const newProductInventory = {
+      ...productInventory,
+      id_producto: idProduct,
+    };
+    return this.http.post(`${this.url}/productos-inventario`, newProductInventory, { headers });
+  }
+
+  uploadImageProduct(image: File, idProduct: number) {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      authorization: `bearer ${token}`,
+    });
+
+    const formData = new FormData();
+    formData.append('image', image);
+    return this.http.post(`${this.url}/img_productos/${idProduct}`, formData, { headers });
   }
 }

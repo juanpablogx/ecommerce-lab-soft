@@ -11,3 +11,8 @@ export interface ProductInventory {
   stock: number
   imagenes: ImageProduct[]
 }
+
+export interface ProductInventoryAdd {
+  talla_inventario: string
+  stock: number
+}

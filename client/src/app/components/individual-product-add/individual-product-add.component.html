@@ -1,0 +1,99 @@
+<div class="main-container">
+  <div class="product-container">
+    <div class="info-container">
+      <h1>Crear Producto</h1>
+      <div class="form-container">
+        <form [formGroup]="productForm" (ngSubmit)="onSubmitProductForm()" id="mainForm">
+          <label for="productName" class="input-label">Nombre:</label>
+          <input type="text" id="productName" class="input-name input" formControlName="name">
+
+          <label for="productPrice" class="input-label">Precio:</label>
+          <input type="number" step="0.01" id="productPrice" class="input-price input" formControlName="price">
+
+          <label for="productDescription" class="input-label">Descripción:</label>
+          <textarea id="productDescription" class="input-description input" formControlName="description"></textarea>
+
+          <label for="productCategory" class="input-label">Categoría:</label>
+          <select id="productCategory" class="input-category input" formControlName="category">
+            <option value="hombre">Hombre</option>
+            <option value="mujer">Mujer</option>
+          </select>
+        </form>
+
+        <form [formGroup]="productInventoryForm">
+          <label class="input-label">Inventario:</label>
+          <div class="inventory-container">
+
+            <select id="productInvSize" class="input-size input" formControlName="size">
+              @for (size of availableSizes; track $index) {
+                <option [value]="size">{{size}}</option>
+              }
+            </select>
+            <input type="number" id="productInvStock" class="input-quantity input" formControlName="stock" min="1" step="1">
+            <button type="submit" (click)="onAddProductInventory()" class="button">Agregar</button>
+
+          </div>
+        </form>
+
+        @if (productsInventory.length > 0) {
+          <table class="inventory-list">
+            <thead class="inventory-list-header">
+              <tr>
+                <th>Talla</th>
+                <th>Stock</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody class="inventory-list-body">
+              @for (inventory of productsInventory; track $index) {
+                <tr class="inventory-list-item">
+                  <td>{{inventory.talla_inventario}}</td>
+                  <td>{{inventory.stock}}</td>
+                  <td class="inventory-list-btns">
+                    <button (click)="onDeleteProductInventory($index)">
+                      <img src="icons/IconTrash.svg" alt="Eliminar">
+                    </button>
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        }
+      </div>
+        <div class="buttons-container">
+          <button class="update-product button" type="submit" form="mainForm">
+            <img src="icons/IconCheck.svg" alt="Crear">
+            Crear
+          </button>
+          <label for="fileInput" class="upload-image button">
+            <img src="icons/IconUpload.svg" alt="Subir">
+            Subir imágenes
+            <input type="file" id="fileInput" style="display: none" accept=".png, .webp, .jpg, .jpeg" multiple (change)="onFileImagesChange($event)">
+          </label>
+        </div>
+    </div>
+    @if (imagesSrc.length > 0) {
+      <div class="carrusel-container">
+        <div class="main-image-container">
+          <img src="{{imagesSrc[0]}}" alt="Imagen producto">
+        </div>
+        <div class="secondary-images-container">
+          @for (image of imagesSrc; track $index) {
+            @if ($index > 0) {
+              <img
+                src="{{image}}"
+                (click)="onSelectMainImage($index)"
+                alt="Imagen producto">
+            }
+          }
+        </div>
+      </div>
+    } @else {
+      <div class="carrusel-container">
+        <div class="main-image-container">
+          <img src="img/no-product-image.png" alt="No Images">
+        </div>
+      </div>
+    }
+  </div>
+</div>
