@@ -168,6 +168,19 @@ router.post('/', createProductoCarritoController);
  *                               precio:
  *                                 type: number
  *                                 example: 150000.00
+ *                              imagen:
+ *                               type: object
+ *                               properties:
+ *                                 id_imagen_producto:
+ *                                   type: integer
+ *                                   example: 1
+ *                                 id_producto:
+ *                                   type: integer
+ *                                   example: 1
+ *                                 url:
+ *                                   type: string
+ *                                   example: "https://www.example.com/image.jpg"
+ * 
  *       400:
  *         description: Error al obtener todos los productos en el carrito
  */

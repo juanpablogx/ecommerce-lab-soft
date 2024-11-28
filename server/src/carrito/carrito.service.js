@@ -2,6 +2,7 @@ const { Op, DatabaseError, QueryError } = require('sequelize');
 const { Carrito, ProductoCarrito } = require('./carrito.model');
 const ProductoInventario = require('../productos-inventario/productos-inventario.model');
 const Producto = require('../productos/productos.model');
+const Imagen_producto = require('../img_productos/img_productos.model');
 
 const addproductoCarrito = async (idUsuario, idProductoInventario, quantity) => {
   let isNewCarrito = false;
@@ -66,6 +67,18 @@ const findActiveCarrito = async (idUsuario) => {
       },
     ],
   });
+
+  if (allCarrito) {
+    for (let i = 0; i < allCarrito.productosCarrito.length; i++) {
+      let imagen = await Imagen_producto.findOne({
+        where: {
+          id_producto: allCarrito.productosCarrito[i].productoInventario.producto.id_producto,
+        },
+      });
+
+      allCarrito.productosCarrito[i].productoInventario.producto.dataValues.imagen = imagen;
+    }
+  }
 
   return allCarrito;
 };
