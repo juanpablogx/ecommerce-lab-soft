@@ -9,3 +9,10 @@ export interface Product {
   imagenes: ImageProduct[]
   productoInventario: any[]
 }
+
+export interface ProductAdd {
+  nombre_producto: string
+  descripcion_producto: string
+  categoria: string
+  precio: number
+}

@@ -28,15 +28,19 @@ const {
  *               nombre_producto:
  *                 type: string
  *                 description: Nombre del producto
- *                 example: "Café especial"
+ *                 example: "Nike Air"
  *               descripcion_producto:
  *                 type: string
  *                 description: Descripción del producto
- *                 example: "Café de alta calidad producido en la región cafetera"
+ *                 example: "Nike Air excelentes zapatillas"
  *               categoria:
  *                 type: string
  *                 description: Categoría del producto
- *                 example: "Bebidas"
+ *                 example: "hombre"
+ *               precio:
+ *                 type: number
+ *                 description: Precio del producto
+ *                 example: 375000.00
  *     responses:
  *       201:
  *         description: Producto creado exitosamente
@@ -50,13 +54,16 @@ const {
  *                   example: 1
  *                 nombre_producto:
  *                   type: string
- *                   example: "Café especial"
+ *                   example: "Nike Air"
  *                 descripcion_producto:
  *                   type: string
- *                   example: "Café de alta calidad producido en la región cafetera"
+ *                   example: "Nike Air excelentes zapatillas"
  *                 categoria:
  *                   type: string
- *                   example: "Bebidas"
+ *                   example: "hombre"
+ *                 precio:
+ *                   type: number
+ *                   example: 375000.00
  *       400:
  *         description: Error al crear el producto
  */
@@ -87,6 +94,8 @@ router.post('/', createController);
  *                     type: string
  *                   categoria:
  *                     type: string
+ *                   precio:
+ *                     type: number
  *       400:
  *         description: Error al obtener los productos
  */
