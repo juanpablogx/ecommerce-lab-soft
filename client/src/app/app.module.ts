@@ -16,6 +16,7 @@ import { CartComponent } from './components/cart/cart.component';
 import { AdminHomeComponent } from './components/admin-home/admin-home.component';
 import { IndividualProductAddComponent } from './components/individual-product-add/individual-product-add.component';
 import { IndividualProductEditComponent } from './components/individual-product-edit/individual-product-edit.component';
+import { AdminProductListComponent } from './components/admin-product-list/admin-product-list.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { IndividualProductEditComponent } from './components/individual-product-
     CartComponent,
     AdminHomeComponent,
     IndividualProductAddComponent,
-    IndividualProductEditComponent
+    IndividualProductEditComponent,
+    AdminProductListComponent
   ],
   imports: [
     BrowserModule,

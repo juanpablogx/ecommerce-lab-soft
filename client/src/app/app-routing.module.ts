@@ -8,6 +8,7 @@ import { CartComponent } from './components/cart/cart.component';
 import { AdminHomeComponent } from './components/admin-home/admin-home.component';
 import { IndividualProductAddComponent } from './components/individual-product-add/individual-product-add.component';
 import { IndividualProductEditComponent } from './components/individual-product-edit/individual-product-edit.component';
+import { AdminProductListComponent } from './components/admin-product-list/admin-product-list.component';
 
 const routes: Routes = [
   { path: '', component: MainHomeComponent },
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'home', component: MainHomeComponent },
   { path: 'cart', component: CartComponent },
   { path: 'admin/home', component: AdminHomeComponent },
+  { path: 'admin/product-edit-list', component: AdminProductListComponent },
   { path: 'admin/product-add', component: IndividualProductAddComponent },
   {
     path: 'admin/product-edit/:id_producto',

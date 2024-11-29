@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class ProductCardComponent {
   @Input() product: any;
+  @Input() edit: boolean = false;
   public isLoggedIn: boolean = false;
   public isLoggedInAdmin: boolean = false;
   
@@ -16,6 +17,10 @@ export class ProductCardComponent {
 
   showMore() {
     this.router.navigate([`/product-details/${this.product.id_producto}`]);
+  }
+
+  editProduct() {
+    this.router.navigate([`admin/product-edit/${this.product.id_producto}`]);
   }
 
   userID() {

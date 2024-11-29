@@ -12,7 +12,8 @@
     </div>
     <div class="buttons-container">
       <button class="add-button" (click)="addToCart()" routerLink="/cart" *ngIf="isLoggedIn  && !isLoggedInAdmin">Add to cart</button>
-      <button class="more-button" (click)="showMore()">Show More</button>
+      <button class="more-button" (click)="showMore()" *ngIf="!this.edit">Show More</button>
+      <button class="more-button" (click)="editProduct()" *ngIf="this.edit">Editar</button>
     </div>
   </div>
 </div>

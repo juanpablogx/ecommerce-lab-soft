@@ -20,9 +20,9 @@
 
 .image-title {
   position: absolute;
-  left: 50%; 
-  transform: translateX(-50%); 
-  font-size: 120px; /* Tamaño de letra grande */
+  left: 50%; /* Centra horizontalmente */
+  transform: translateX(-50%); /* Centra horizontalmente */
+  font-size: 150px; /* Tamaño de letra grande */
   color: white; /* Color blanco */
   margin: 0;
   text-align: center; /* Centra el texto */
@@ -115,101 +115,4 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 20px;
-  margin-top: 5%;
-}
-
-.product-container {
-  display: flex;
-  flex-direction: column;
-  border-radius: 30px;
-  padding: 25px;
-  background-color: #ffffff;
-  max-width: 300px; /* Ajusta el tamaño máximo */
-  margin: 0 auto; /* Centra horizontalmente */
-}
-
-.image-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 150px; /* Altura fija para uniformidad */
-  width: 150px; /* Ancho fijo para uniformidad */
-  margin: auto;
-}
-
-.image-container img {
-  max-width: 100%; /* Asegura que la imagen no exceda el ancho del contenedor */
-  max-height: 100%; /* Asegura que la imagen no exceda la altura del contenedor */
-  object-fit: contain; /* Escala la imagen sin recortarla */
-}
-
-.product-name {
-  font-size: 24px;
-  margin: 10px 0;
-}
-
-.info-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: column;
-}
-
-.price-container {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: fit-content; /* Ajusta la altura según el contenido */
-  padding: 10px 0;
-}
-
-
-.price-container label{
-  font-size: 20px;
-
-}
-
-.product-price {
-  font-size: 28px;
-  margin:0;
-}
-
-.buttons-container{
-  display: inline-flex;
-}
-
-.more-button{
-  padding: 10px 20px; /* Espaciado interno */
-  background-color: #011232; /* Color de fondo */
-  color: white; /* Color del texto */
-  border: 1px solid #011232; /* Sin borde */
-  border-radius: 30px; /* Borde redondeado */
-  cursor: pointer; /* Cursor al pasar */
-  transition: background-color 0.3s ease; /* Transición suave */
-  margin-right: 10px;
-  font-size: 16px;
-}
-  
-.more-button:hover {
-  background-color: white; /* Color de fondo al pasar */
-  color:#011232;
-  border: 1px solid #011232;
-}
-
-.add-button{
-  padding: 10px 20px; /* Espaciado interno */
-  background-color: white; /* Color de fondo */
-  color: #011232; /* Color del texto */
-  border: 1px solid #011232; 
-  border-radius: 30px; /* Borde redondeado */
-  cursor: pointer; /* Cursor al pasar */
-  transition: background-color 0.3s ease; /* Transición suave */
-  margin-right: 10px;
-  font-size: 16px;
-}
-
-.add-button:hover {
-  background-color: #011232; /* Color de fondo al pasar */
-  color:white;
 }
