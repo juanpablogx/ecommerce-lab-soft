@@ -17,9 +17,9 @@
         <div class="watchs-container link-container">
           <a routerLink="/home/mujer" routerLinkActive="active" [class.active]="isLinkActive('watchs')"><h2>Mujer</h2></a>
         </div>
-        <!-- <div class="watchs-container link-container">
-          <a routerLinkActive="active" routerLink="admin/home" *ngIf="isLoggedInAdmin"><h2>Inventario</h2></a>
-        </div> -->
+        <div class="watchs-container link-container">
+          <a routerLinkActive="active" routerLink="admin/home" *ngIf="isLoggedInAdmin"><h2>Admin Panel</h2></a>
+        </div>
         <div class="buttons-container">
           <button class="circular-button" routerLink="/cart" *ngIf="isLoggedIn  && !isLoggedInAdmin"><img src="/icons/IconShoppingCart.svg" title="Carrito de compras" alt="Cart Icon"></button>
           <button class="circular-button" routerLink="/login" *ngIf="!isLoggedIn"><img src="icons/IconUser.svg" alt="User Icon"></button>
