@@ -14,6 +14,8 @@ import { MainHomeComponent } from './components/main-home/main-home.component';
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { CartComponent } from './components/cart/cart.component';
 import { AdminHomeComponent } from './components/admin-home/admin-home.component';
+import { IndividualProductAddComponent } from './components/individual-product-add/individual-product-add.component';
+import { IndividualProductEditComponent } from './components/individual-product-edit/individual-product-edit.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { AdminHomeComponent } from './components/admin-home/admin-home.component
     MainHomeComponent,
     ProductCardComponent,
     CartComponent,
-    AdminHomeComponent
+    AdminHomeComponent,
+    IndividualProductAddComponent,
+    IndividualProductEditComponent
   ],
   imports: [
     BrowserModule,

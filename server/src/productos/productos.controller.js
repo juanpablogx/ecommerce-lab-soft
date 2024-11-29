@@ -45,7 +45,7 @@ const updateController = async (req, res) => {
     console.log(id);
     const producto = req.body;
     const updatedProducto = await services.update(id, producto);
-    res.status(200).json(updatedProducto);
+    res.status(200).json(updatedProducto[1][0]);
   } catch (error) {
     res.status(400).json(error);
   }
